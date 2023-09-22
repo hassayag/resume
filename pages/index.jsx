@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import styles from './home.module.css';
+import commonStyles from './common.module.sass';
+import styles from './home.module.sass';
 
 export default function Home() {
   return (
@@ -28,15 +29,26 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.section}>
-          <h2 className={styles.heading}>About me</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
-          </p>
+        <div className={commonStyles.sectionBorder}>
+          <div className={commonStyles.section}>
+            <h2 className={commonStyles.heading}>About me</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+            </p>
+          </div>
+        </div>
+
+        <div className={commonStyles.sectionBorder}>
+          <div className={commonStyles.section}>
+            <h2 className={commonStyles.heading}>Portfolio</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+            </p>
+          </div>
         </div>
       </main>
 
-      <footer>
+      <footer className={commonStyles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -50,29 +62,6 @@ export default function Home() {
       <style jsx>{`
         main {
           padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
         }
         code {
           background: #fafafa;
@@ -94,6 +83,7 @@ export default function Home() {
       <style jsx global>{`
         html,
         body {
+          min-height: 100%;
           padding: 0;
           margin: 0;
           font-family:

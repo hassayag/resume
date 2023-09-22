@@ -1,0 +1,57 @@
+@import 'theme.sass'
+
+.title
+  color: secondary
+  margin: 5rem
+  line-height: 1.15
+  font-size: 3.6rem
+  text-align: center
+  text-shadow: 2px 2px 3px $shadow
+
+  & a
+    color: $primary
+    text-decoration: none
+
+// .title a:hover,
+// .title a:focus,
+// .title a:active
+//   text-decoration: underline
+
+.nav
+  display: flex
+  justify-content: center
+  flex-direction: row
+  position: absolute
+  top: 1rem
+  width: 100%
+  padding-bottom: 0.4rem
+  border-bottom: 1px solid $divider
+  box-shadow: 0 5px 6px 0 rgba(0,0,0,.2)
+
+.card
+  min-width: 10rem
+  width: 6rem
+  margin: 0.2rem
+  flex-basis: 8%
+  padding: 1rem 0.3rem 1rem 0.3rem
+  text-align: center
+  color: black
+  text-decoration: none
+  font-weight: bold
+  border: 1px solid $secondary
+  border-radius: 8px
+  box-shadow: 3px 3px 6px 0 rgba(0,0,0,.2)
+  transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease
+
+  // &:first-child
+  //   margin-left: 38vw
+
+.card:hover,
+.card:focus,
+.card:active
+  color: $glow
+  border-color: $glow
+  box-shadow: 3px 3px 6px 0 $glow-shadow
+
+.logo
+  height: 1em
