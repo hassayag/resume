@@ -27,6 +27,10 @@ export default function Home() {
           <div className={styles.card}>
             Portfolio
           </div>
+
+          <div className={styles.card}>
+            Gear
+          </div>
         </div>
 
         <div className={commonStyles.sectionBorder}>
@@ -41,6 +45,15 @@ export default function Home() {
         <div className={commonStyles.sectionBorder}>
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>Portfolio</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+            </p>
+          </div>
+        </div>
+
+        <div className={commonStyles.sectionBorder}>
+          <div className={commonStyles.section}>
+            <h2 className={commonStyles.heading}>Gear</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
             </p>

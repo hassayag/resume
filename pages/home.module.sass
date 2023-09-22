@@ -1,15 +1,15 @@
 @import 'theme.sass'
 
 .title
-  color: secondary
+  color: $text-dark
   margin: 8rem
   line-height: 1.15
   font-size: 3.6rem
   text-align: center
-  text-shadow: 2px 2px 3px $shadow
+  text-shadow: 2px 2px 3px #3333338f
 
   & a
-    color: $primary
+    color: $highlight
     text-decoration: none
 
 // .title a:hover,
@@ -21,10 +21,10 @@
   display: flex
   justify-content: center
   flex-direction: row
-  position: absolute
-  top: 0rem
-  width: 100%
+  position: fixed
+  top: 0
   right: 0
+  width: 100%
   padding-top: 0.5rem
   padding-bottom: 0.4rem
   border-bottom: 1px solid $divider
@@ -38,7 +38,7 @@
   flex-basis: 8%
   padding: 1rem 0.3rem 1rem 0.3rem
   text-align: center
-  color: black
+  color: $text-light
   background-color: $highlight
   text-decoration: none
   font-weight: bold
@@ -61,7 +61,7 @@
   height: 1em
 
 .footer
-  position: absolute
+  position: fixed
   bottom: 0rem
   min-height: 5rem
   width: 100%
@@ -71,6 +71,7 @@
   align-items: center
   box-shadow: 0 -5px 6px 0 $shadow
   background-color: $header-footer
+  color: $text-light
 
   & img
     margin-left: 0.5rem
