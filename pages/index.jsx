@@ -4,9 +4,9 @@ import styles from './home.module.sass';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div className={commonStyles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>harry.assayag</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -48,7 +48,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={commonStyles.footer}>
+      <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -61,7 +61,7 @@ export default function Home() {
 
       <style jsx>{`
         main {
-          padding: 5rem 0;
+          padding: 0;
         }
         code {
           background: #fafafa;

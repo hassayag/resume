@@ -2,7 +2,7 @@
 
 .title
   color: secondary
-  margin: 5rem
+  margin: 8rem
   line-height: 1.15
   font-size: 3.6rem
   text-align: center
@@ -22,11 +22,14 @@
   justify-content: center
   flex-direction: row
   position: absolute
-  top: 1rem
+  top: 0rem
   width: 100%
+  right: 0
+  padding-top: 0.5rem
   padding-bottom: 0.4rem
   border-bottom: 1px solid $divider
-  box-shadow: 0 5px 6px 0 rgba(0,0,0,.2)
+  box-shadow: 0 5px 6px 0 $shadow
+  background-color: $header-footer
 
 .card
   min-width: 10rem
@@ -36,6 +39,7 @@
   padding: 1rem 0.3rem 1rem 0.3rem
   text-align: center
   color: black
+  background-color: $highlight
   text-decoration: none
   font-weight: bold
   border: 1px solid $secondary
@@ -49,9 +53,32 @@
 .card:hover,
 .card:focus,
 .card:active
-  color: $glow
+  color: $glow-shadow
   border-color: $glow
   box-shadow: 3px 3px 6px 0 $glow-shadow
 
 .logo
   height: 1em
+
+.footer
+  position: absolute
+  bottom: 0rem
+  min-height: 5rem
+  width: 100%
+  border-top: 1px solid $divider
+  display: flex
+  justify-content: center
+  align-items: center
+  box-shadow: 0 -5px 6px 0 $shadow
+  background-color: $header-footer
+
+  & img
+    margin-left: 0.5rem
+
+  & a
+    padding-top: 1rem
+    display: flex
+    justify-content: center
+    align-items: center
+    text-decoration: none
+    color: inherit
