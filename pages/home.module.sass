@@ -9,7 +9,7 @@
   text-shadow: 2px 2px 3px #7272728f
 
   & a
-    color: $highlight
+    color: $primary
     text-decoration: none
 
 .links 
@@ -56,20 +56,21 @@
   padding: 1rem 0.3rem 1rem 0.3rem
   text-align: center
   color: $text-dark
-  background-color: $text-light
+  background-color: rgba($text-light,0.6)
   text-decoration: none
   font-weight: bold
-  border: 1px solid $secondary
+  border: 2px solid rgba($secondary, 0.5)
   border-radius: 8px
   box-shadow: 3px 3px 6px 0 rgba(0,0,0,.2)
-  transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease
+  transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease
 
 .card:hover,
 .card:focus,
 .card:active
-  color: $glow-shadow
-  border-color: $glow
-  box-shadow: 3px 3px 6px 0 $glow-shadow
+  color: $text-light
+  border-color: $text-light
+  box-shadow: 3px 3px 6px 0 $highlight
+  background-color: rgba($primary,0.95)
 
 .logo
   height: 1em
