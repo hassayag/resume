@@ -133,6 +133,7 @@ export default function Home() {
           min-height: 100%;
           padding: 0;
           margin: 0;
+          background-color: rgb(230, 230, 230);
           font-family:
             -apple-system,
             BlinkMacSystemFont,
