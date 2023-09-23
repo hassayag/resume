@@ -36,6 +36,7 @@ img {
 }
 
 #embed-iframe {
-  width: 50%;
-  margin-left: 25%
+  width: 25%;
+  margin-left: 37.5%;
+  filter: drop-shadow(10px 10px 1px rgba(150, 150, 150, 0.829))
 }
