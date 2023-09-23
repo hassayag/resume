@@ -13,6 +13,22 @@ export default function Home() {
       <main>
         <h1 className={styles.title}>
           Harry <a>Assayag</a>
+          <div className={styles.links}>
+          <a
+            href="https://github.com/hassayag"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/github.svg" alt="github" className={styles.link}/>
+          </a>
+          <a
+            href="https://uk.linkedin.com/in/harryassayag"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/linkedin.svg" alt="linkedin" className={styles.link}/>
+          </a>
+          </div>
         </h1>
 
         <div className={styles.nav}>
@@ -30,6 +46,10 @@ export default function Home() {
 
           <div className={styles.card}>
             Gear
+          </div>
+
+          <div className={styles.card}>
+            Contact
           </div>
         </div>
 

@@ -12,6 +12,23 @@
     color: $highlight
     text-decoration: none
 
+.links 
+  display: flex
+  flex-direction: row
+  justify-content: center
+  
+  & a 
+    margin-right: 1rem
+    
+.link
+  height: 2.5rem
+  transition: filter 0.5s ease
+
+.link:hover,
+.link:focus,
+.link:active
+  filter: drop-shadow(4px 4px 1px rgba(167, 167, 167, 0.473))
+
 // .title a:hover,
 // .title a:focus,
 // .title a:active
@@ -30,6 +47,7 @@
   border-bottom: 1px solid $divider
   box-shadow: 0 5px 6px 0 $shadow
   background-color: $header-footer
+  backdrop-filter: blur($blur)
 
 .card
   min-width: 10rem
@@ -38,8 +56,8 @@
   flex-basis: 8%
   padding: 1rem 0.3rem 1rem 0.3rem
   text-align: center
-  color: $text-light
-  background-color: $highlight
+  color: $text-dark
+  background-color: $text-light
   text-decoration: none
   font-weight: bold
   border: 1px solid $secondary
@@ -71,7 +89,8 @@
   align-items: center
   box-shadow: 0 -5px 6px 0 $shadow
   background-color: $header-footer
-  color: $text-light
+  color: $text-dark
+  backdrop-filter: blur($blur)
 
   & img
     margin-left: 0.5rem
