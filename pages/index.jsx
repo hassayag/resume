@@ -23,7 +23,7 @@ export default function Home() {
     `
   };
 
-    useEffect(() => embedSpotify())
+    useEffect(() => embedSpotify(), [])
 
   return (
     <div className={commonStyles.container}>
