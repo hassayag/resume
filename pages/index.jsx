@@ -11,6 +11,7 @@ export default function Home() {
       </Head>
 
       <main>
+        <a id='home'/> 
         <h1 className={styles.title}>
           Harry <a>Assayag</a>
           <div className={styles.links}>
@@ -32,28 +33,29 @@ export default function Home() {
         </h1>
 
         <div className={styles.nav}>
-          <div href="/" className={styles.card}>
+        <a href="#home" className={styles.card}>
             Home
-          </div>
+          </a>
 
-          <div href="/about" className={styles.card}>
+          <a href="#about" className={styles.card}>
             About
-          </div>
+          </a>
           
-          <div className={styles.card}>
+          <a href="#portfolio" className={styles.card}>
             Portfolio
-          </div>
+          </a>
 
-          <div className={styles.card}>
+          <a href="#gear" className={styles.card}>
             Gear
-          </div>
+          </a>
 
-          <div className={styles.card}>
+          <a href="#contact" className={styles.card}>
             Contact
-          </div>
+          </a>
         </div>
 
         <div className={commonStyles.sectionBorder}>
+          <a id='about'/>
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>About me</h2>
             <p>
@@ -63,6 +65,7 @@ export default function Home() {
         </div>
 
         <div className={commonStyles.sectionBorder}>
+          <a id='portfolio'/>
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>Portfolio</h2>
             <p>
@@ -72,8 +75,19 @@ export default function Home() {
         </div>
 
         <div className={commonStyles.sectionBorder}>
+          <a id='gear'/>
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>Gear</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+            </p>
+          </div>
+        </div>
+
+        <div className={commonStyles.sectionBorder}>
+          <a id='contact'/>
+          <div className={commonStyles.section}>
+            <h2 className={commonStyles.heading}>Contact</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
             </p>
@@ -131,6 +145,9 @@ export default function Home() {
             Droid Sans,
             Helvetica Neue,
             sans-serif;
+        }
+        html {
+          scroll-behavior: smooth;
         }
         * {
           box-sizing: border-box;
