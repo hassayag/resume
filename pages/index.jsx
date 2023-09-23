@@ -1,8 +1,30 @@
-import Head from 'next/head';
-import commonStyles from './common.module.sass';
-import styles from './home.module.sass';
+import React, { useEffect } from "react";
+import Head from "next/head";
+import commonStyles from "./common.module.sass";
+import styles from "./home.module.sass";
 
 export default function Home() {
+  const embedSpotify = async () => {
+    const response = await fetch("/api/spotify");
+    const uri = await response.text();
+    const element = document.getElementById("embed-iframe");
+
+    element.innerHTML = `
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/${uri}?utm_source=generator"
+        width="20%"
+        height="10%"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    `
+  };
+
+    useEffect(() => embedSpotify())
+
   return (
     <div className={commonStyles.container}>
       <Head>
@@ -11,36 +33,40 @@ export default function Home() {
       </Head>
 
       <main>
-        <a id='home'/> 
+        <a id="home" />
         <h1 className={styles.title}>
           Harry <a>Assayag</a>
           <div className={styles.links}>
-          <a
-            href="https://github.com/hassayag"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/github.svg" alt="github" className={styles.link}/>
-          </a>
-          <a
-            href="https://uk.linkedin.com/in/harryassayag"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/linkedin.svg" alt="linkedin" className={styles.link}/>
-          </a>
+            <a
+              href="https://github.com/hassayag"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/github.svg" alt="github" className={styles.link} />
+            </a>
+            <a
+              href="https://uk.linkedin.com/in/harryassayag"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/linkedin-blue.svg"
+                alt="linkedin"
+                className={styles.link}
+              />
+            </a>
           </div>
         </h1>
-
+        <div id="embed-iframe"></div>
         <div className={styles.nav}>
-        <a href="#home" className={styles.card}>
+          <a href="#home" className={styles.card}>
             Home
           </a>
 
           <a href="#about" className={styles.card}>
             About
           </a>
-          
+
           <a href="#portfolio" className={styles.card}>
             Portfolio
           </a>
@@ -53,43 +79,51 @@ export default function Home() {
             Contact
           </a>
         </div>
-
         <div className={commonStyles.sectionBorder}>
-          <a id='about'/>
+          <a id="about" />
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>About me</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+              minima cum quo adipisci iste, aliquam odio. Impedit quidem
+              repudiandae officiis repellat omnis, molestiae, et aliquid nihil
+              ea officia non aut?
             </p>
           </div>
         </div>
-
         <div className={commonStyles.sectionBorder}>
-          <a id='portfolio'/>
+          <a id="portfolio" />
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>Portfolio</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+              minima cum quo adipisci iste, aliquam odio. Impedit quidem
+              repudiandae officiis repellat omnis, molestiae, et aliquid nihil
+              ea officia non aut?
             </p>
           </div>
         </div>
-
         <div className={commonStyles.sectionBorder}>
-          <a id='gear'/>
+          <a id="gear" />
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>Gear</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+              minima cum quo adipisci iste, aliquam odio. Impedit quidem
+              repudiandae officiis repellat omnis, molestiae, et aliquid nihil
+              ea officia non aut?
             </p>
           </div>
         </div>
-
         <div className={commonStyles.sectionBorder}>
-          <a id='contact'/>
+          <a id="contact" />
           <div className={commonStyles.section}>
             <h2 className={commonStyles.heading}>Contact</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea officia non aut?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+              minima cum quo adipisci iste, aliquam odio. Impedit quidem
+              repudiandae officiis repellat omnis, molestiae, et aliquid nihil
+              ea officia non aut?
             </p>
           </div>
         </div>
@@ -101,59 +135,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
         </a>
       </footer>
-
-      <style jsx>{`
-        main {
-          padding: 0;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          min-height: 100%;
-          padding: 0;
-          margin: 0;
-          background-color: rgb(230, 230, 230);
-          font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Segoe UI,
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            Fira Sans,
-            Droid Sans,
-            Helvetica Neue,
-            sans-serif;
-        }
-        html {
-          scroll-behavior: smooth;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   );
 }
