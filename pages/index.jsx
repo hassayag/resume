@@ -67,6 +67,18 @@ export default function Home() {
                 className={styles.link}
               />
             </a>
+
+            <a
+              href="https://open.spotify.com/user/hazzarius?si=bb02b8c9aeba426a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/spotify.svg"
+                alt="spotify"
+                className={styles.link}
+              />
+            </a>
           </div>
         </h1>
         <div id="embed-iframe"></div>
