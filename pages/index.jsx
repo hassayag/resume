@@ -16,6 +16,7 @@ export default function Home() {
         style="border-radius:12px"
         src="https://open.spotify.com/embed/track/${uri}?utm_source=generator"
         width="100%"
+        height="200px"
         padding-right="25%"
         frameBorder="0"
         allowfullscreen=""
