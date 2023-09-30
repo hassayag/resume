@@ -32,7 +32,6 @@ const Sidebar = () => {
         let closestAnchor = 'home'
         let minDistance: number | null = null;
 
-        console.log(scrollPos)
         for (let i=0; i<anchors.length; i++) {
             const anchor = anchors[i] as HTMLElement;
             const distance = (anchor.offsetTop - scrollPos)**2

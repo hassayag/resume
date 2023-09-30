@@ -50,7 +50,6 @@ async function getIFrame(uri) {
     // const response = await fetch(`https://open.spotify.com/embed-track/iframe-api/v1/${uri}`, options);
     const response = await fetch(`https://open.spotify.com/embed-podcast/iframe-api/v1/spotify:episode:00ANHlyEzJBowXkrljDvzr`, options);
 
-    console.log({response})
     if (response.status !== 200) {
         return;
     }
