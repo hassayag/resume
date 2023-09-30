@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./sidebar.module.sass";
 
 const Sidebar = () => {
@@ -24,7 +24,7 @@ const Sidebar = () => {
       updateClosestAnchor();
     });
     // Create a ref for the DOM element you want to start from
-    const elementRef = useRef(null);
+    // const elementRef = useRef(null);
   
     // Function to find the closest anchor tag
     const updateClosestAnchor = () => {
@@ -68,7 +68,7 @@ const Sidebar = () => {
         }
 
         return (
-            <div className={cardClasses.join(' ')}>
+            <div key={item} className={cardClasses.join(' ')}>
                 <a href={`#${item}`}>
                     <div>
                         {item.charAt(0).toUpperCase() + item.slice(1, item.length)}

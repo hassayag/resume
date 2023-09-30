@@ -88,26 +88,26 @@ async function getToken() {
     return lastToken;
 }
 
-async function login() {
-    var redirect_uri = 'http://localhost:3002/';    
-    var state = crypto.randomBytes(20).toString('hex');
-    var scope = 'user-read-private user-read-email';
+// async function login() {
+//     const redirect_uri = 'http://localhost:3002/';    
+//     const state = crypto.randomBytes(20).toString('hex');
+//     const scope = 'user-read-private user-read-email';
 
-    const requestBody = {
-        response_type: 'code',
-        client_id: CLIENT_ID,
-        scope: scope,
-        redirect_uri: redirect_uri,
-        state: state
-    };
+//     const requestBody = {
+//         response_type: 'code',
+//         client_id: CLIENT_ID,
+//         scope: scope,
+//         redirect_uri: redirect_uri,
+//         state: state
+//     };
 
-    const response = await fetch('https://accounts.spotify.com/authorize?' + queryString.stringify(requestBody))
-    if (response.status !== 200) {
-        res.status(response.status).send(response.statusText)
-        return;
-    }
+//     const response = await fetch('https://accounts.spotify.com/authorize?' + queryString.stringify(requestBody))
+//     if (response.status !== 200) {
+//         res.status(response.status).send(response.statusText)
+//         return;
+//     }
     
-    const data = await response.text()
-    console.log(data)
-    return data;
-}
+//     const data = await response.text()
+//     console.log(data)
+//     return data;
+// }
