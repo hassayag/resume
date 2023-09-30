@@ -30,10 +30,12 @@ const Sidebar = () => {
     const updateClosestAnchor = () => {
         const anchors = document.getElementsByClassName('anchor')
         let closestAnchor = 'home'
-        let minDistance = null
+        let minDistance: number | null = null;
+
         console.log(scrollPos)
         for (let i=0; i<anchors.length; i++) {
-            const distance = (anchors[i].offsetTop - scrollPos)**2
+            const anchor = anchors[i] as HTMLElement;
+            const distance = (anchor.offsetTop - scrollPos)**2
             if (minDistance === null || distance < minDistance) {
                 closestAnchor = anchors[i].id
                 minDistance = distance
