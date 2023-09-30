@@ -31,12 +31,17 @@ const Sidebar = () => {
         const anchors = document.getElementsByClassName('anchor')
         let closestAnchor = 'home'
         let minDistance = null
+        console.log(scrollPos)
         for (let i=0; i<anchors.length; i++) {
             const distance = (anchors[i].offsetTop - scrollPos)**2
             if (minDistance === null || distance < minDistance) {
                 closestAnchor = anchors[i].id
                 minDistance = distance
             }
+        }
+
+        if (scrollPos < 50) {
+            closestAnchor = 'home'
         }
         setActiveCard(closestAnchor)
       }
@@ -61,7 +66,7 @@ const Sidebar = () => {
         if (item === activeCard) {
             cardClasses.push(styles.activeCard)
         }
-        console.log(cardClasses)
+
         return (
             <div className={cardClasses.join(' ')}>
                 <a href={`#${item}`}>
