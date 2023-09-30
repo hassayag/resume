@@ -7,10 +7,10 @@
     height: 100%
     border-right: 1px solid $divider
     box-shadow: 0 5px 6px 0 $shadow
-    background-color: $header-footer
+    background-color: rgba($header-footer, 0.4)
     backdrop-filter: blur($blur)
-    width: 5.5%
-    min-width: 6rem
+    width: 5.68rem
+    min-width: 5.68rem
 
 .sidebarClosed
     transition: all 0.5s ease
@@ -25,6 +25,8 @@
     width: 10%
     min-width: 8rem
     color: $text-dark
+    transition: all 0.5s ease
+
 
     .hamburger
         transition: transform 0.5s ease
@@ -48,7 +50,7 @@
         pointer-events: none
             
     a div
-        padding: 1rem 0.3rem 1rem 0.3rem
+        padding: 1rem
         z-index: 1   
     
 .activeCard
@@ -77,3 +79,19 @@
     border: 0
     background-color: transparent
     width: 4rem    
+
+.label
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+.icon
+    transform: scale(1.4) 
+
+.hide
+    color: transparent
+    transition: color 0.1s ease-out
+
+.show
+    transition: color 0.3s ease-in
+    transition-delay: 0.1s

@@ -106,9 +106,9 @@ export default function Home() {
             </div>
           </div>
           <div className={commonStyles.sectionBorder}>
-            <a className="anchor" id="portfolio" />
+            <a className="anchor" id="projects" />
             <div className={commonStyles.section}>
-              <h2 className={commonStyles.heading}>Portfolio</h2>
+              <h2 className={commonStyles.heading}>Projects</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
                 minima cum quo adipisci iste, aliquam odio. Impedit quidem

@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import DevicesIcon from '@mui/icons-material/Devices';
+import EmailIcon from '@mui/icons-material/Email';
+
 import styles from "./sidebar.module.sass";
 
+const SCROLL_OFFSET = 500;
+
 const Sidebar = () => {
-    const items = ['home', 'about', 'portfolio', 'gear', 'contact']
-    
+    const items = {
+        home: <HomeIcon className={styles.icon}/>,
+        about: <InfoIcon className={styles.icon}/>,
+        projects: <MenuBookIcon className={styles.icon}/>,
+        gear: <DevicesIcon className={styles.icon}/>,
+        contact: <EmailIcon className={styles.icon}/>,
+    }
+
     const [scrollPos, setScrollPos] = useState(0);
     const [activeCard, setActiveCard] = useState('');
   
@@ -34,14 +48,14 @@ const Sidebar = () => {
 
         for (let i=0; i<anchors.length; i++) {
             const anchor = anchors[i] as HTMLElement;
-            const distance = (anchor.offsetTop - scrollPos)**2
+            const distance = (anchor.offsetTop - (scrollPos + SCROLL_OFFSET))**2
             if (minDistance === null || distance < minDistance) {
                 closestAnchor = anchors[i].id
                 minDistance = distance
             }
         }
 
-        if (scrollPos < 50) {
+        if (scrollPos < SCROLL_OFFSET - 300) {
             closestAnchor = 'home'
         }
         setActiveCard(closestAnchor)
@@ -62,17 +76,20 @@ const Sidebar = () => {
         sidebarClasses.push(styles.sidebarClosed)
     }
 
-    const itemsHtml = items.map(item => {
+    const itemsHtml = Object.entries(items).map(([name, icon]) => {
         const cardClasses = Array.from(defaultCardClasses)
-        if (item === activeCard) {
+        if (name === activeCard) {
             cardClasses.push(styles.activeCard)
         }
 
         return (
-            <div key={item} className={cardClasses.join(' ')}>
-                <a href={`#${item}`}>
-                    <div>
-                        {item.charAt(0).toUpperCase() + item.slice(1, item.length)}
+            <div key={name} className={cardClasses.join(' ')}>
+                <a href={`#${name}`}>
+                    <div className={styles.label}>
+                        {icon}
+                        <span className={isOpen ? styles.show : styles.hide}>
+                            {name.charAt(0).toUpperCase() + name.slice(1, name.length)}
+                        </span>
                     </div>
                 </a>
             </div>
