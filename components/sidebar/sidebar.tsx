@@ -7,7 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 import styles from "./sidebar.module.sass";
 
-const SCROLL_OFFSET = 500;
+const SCROLL_OFFSET = 600;
 
 const Sidebar = () => {
     const items = {
@@ -55,7 +55,7 @@ const Sidebar = () => {
             }
         }
 
-        if (scrollPos < SCROLL_OFFSET - 300) {
+        if (scrollPos < 200) {
             closestAnchor = 'home'
         }
         setActiveCard(closestAnchor)
