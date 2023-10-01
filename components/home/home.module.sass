@@ -1,0 +1,35 @@
+@import 'styles/theme'
+
+.title
+  color: $text-dark
+  margin: 8rem
+  line-height: 1.15
+  font-size: 3.6rem
+  text-align: center
+  text-shadow: 2px 2px 3px #7272728f
+
+  & a
+    color: $primary
+    text-decoration: none
+
+.links 
+  display: flex
+  flex-direction: row
+  justify-content: center
+  
+  & a 
+    margin-right: 1rem
+    
+.link
+  height: 2.5rem
+  transition: filter 0.5s ease
+
+.link:hover,
+.link:focus,
+.link:active
+  filter: drop-shadow(4px 4px 1px rgba(167, 167, 167, 0.473))
+
+// .title a:hover,
+// .title a:focus,
+// .title a:active
+//   text-decoration: underline

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
-import commonStyles from "./common.module.sass";
-import styles from "./home.module.sass";
+import commonStyles from "../components/common.module.sass";
+import styles from "./main.module.sass";
 
 import Sidebar from "../components/sidebar/sidebar";
+import Home from "../components/home/home";
 
-export default function Home() {
+export default function Main() {
   const embedSpotify = async () => {
     const response = await fetch("/api/spotify");
     const uri = await response.text();
@@ -52,129 +53,19 @@ export default function Home() {
         </Head>
 
         <main>
-          <a id="home" />
-          <h1 className={styles.title}>
-            Harry <a>Assayag</a>
-            <div className={styles.links}>
-              <a
-                href="https://github.com/hassayag"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/github.svg" alt="github" className={styles.link} />
-              </a>
-              <a
-                href="https://uk.linkedin.com/in/harryassayag"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="/linkedin-blue.svg"
-                  alt="linkedin"
-                  className={styles.link}
-                />
-              </a>
-
-              <a
-                href="https://open.spotify.com/user/hazzarius?si=bb02b8c9aeba426a"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src="/spotify.svg" alt="spotify" className={styles.link} />
-              </a>
-            </div>
-          </h1>
-          <div id="embed-iframe"></div>
-
-          <div className={commonStyles.sectionBorder}>
-            <a className="anchor" id="about" />
-            <div className={commonStyles.section}>
-              <h2 className={commonStyles.heading}>About me</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                minima cum quo adipisci iste, aliquam odio. Impedit quidem
-                repudiandae officiis repellat omnis, molestiae, et aliquid nihil
-                ea officia non aut? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Error minima cum quo adipisci iste, aliquam
-                odio. Impedit quidem repudiandae officiis repellat omnis,
-                molestiae, et aliquid nihil ea officia non aut? Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Error minima cum
-                quo adipisci iste, aliquam odio. Impedit quidem repudiandae
-                officiis repellat omnis, molestiae, et aliquid nihil ea officia
-                non aut?
-              </p>
-            </div>
-          </div>
-          <div className={commonStyles.sectionBorder}>
-            <a className="anchor" id="projects" />
-            <div className={commonStyles.section}>
-              <h2 className={commonStyles.heading}>Projects</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                minima cum quo adipisci iste, aliquam odio. Impedit quidem
-                repudiandae officiis repellat omnis, molestiae, et aliquid nihil
-                ea officia non aut? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Error minima cum quo adipisci iste, aliquam
-                odio. Impedit quidem repudiandae officiis repellat omnis,
-                molestiae, et aliquid nihil ea officia non aut? Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Error minima cum
-                quo adipisci iste, aliquam odio. Impedit quidem repudiandae
-                officiis repellat omnis, molestiae, et aliquid nihil ea officia
-                non aut?
-              </p>
-            </div>
-          </div>
-          <div className={commonStyles.sectionBorder}>
-            <a className="anchor" id="gear" />
-            <div className={commonStyles.section}>
-              <h2 className={commonStyles.heading}>Gear</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                minima cum quo adipisci iste, aliquam odio. Impedit quidem
-                repudiandae officiis repellat omnis, molestiae, et aliquid nihil
-                ea officia non aut? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Error minima cum quo adipisci iste, aliquam
-                odio. Impedit quidem repudiandae officiis repellat omnis,
-                molestiae, et aliquid nihil ea officia non aut? Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Error minima cum
-                quo adipisci iste, aliquam odio. Impedit quidem repudiandae
-                officiis repellat omnis, molestiae, et aliquid nihil ea officia
-                non aut?
-              </p>
-            </div>
-          </div>
-          <div className={commonStyles.sectionBorder}>
-            <a className="anchor" id="contact" />
-            <div className={commonStyles.section}>
-              <h2 className={commonStyles.heading}>Contact</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                minima cum quo adipisci iste, aliquam odio. Impedit quidem
-                repudiandae officiis repellat omnis, molestiae, et aliquid nihil
-                ea officia non aut? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Error minima cum quo adipisci iste, aliquam
-                odio. Impedit quidem repudiandae officiis repellat omnis,
-                molestiae, et aliquid nihil ea officia non aut? Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Error minima cum
-                quo adipisci iste, aliquam odio. Impedit quidem repudiandae
-                officiis repellat omnis, molestiae, et aliquid nihil ea officia
-                non aut?
-              </p>
-            </div>
-          </div>
+         <Home/>
         </main>
-
-        <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by{" "}
-            <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
-          </a>
-        </footer>
       </div>
+      <footer className={styles.footer}>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{" "}
+          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
+        </a>
+      </footer>
     </>
   );
 }

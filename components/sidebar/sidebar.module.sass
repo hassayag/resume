@@ -1,4 +1,4 @@
-@import '../theme.sass'
+@import 'styles/theme.sass'
 
 .sidebar
     display: flex
@@ -7,10 +7,10 @@
     height: 100%
     border-right: 1px solid $divider
     box-shadow: 0 5px 6px 0 $shadow
-    background-color: rgba($header-footer, 0.4)
+    background-color: rgba($header-footer, 0.8)
     backdrop-filter: blur($blur)
-    width: 5.68rem
-    min-width: 5.68rem
+    width: 6rem
+    min-width: 6rem
     z-index: 2
 
 .sidebarClosed
@@ -23,7 +23,7 @@
         
 .sidebarOpen
     transition: all 0.5s ease
-    width: 10%
+    width: 6%
     min-width: 11rem
     color: $text-dark
     transition: all 0.5s ease
@@ -35,7 +35,7 @@
 
 .card
     margin: 0.5rem 1rem 0.5rem 1rem
-    flex-basis: 4%
+    flex-basis: 4rem
     text-align: center
     color: transparent
     // background-color: rgba($text-light,0.6)

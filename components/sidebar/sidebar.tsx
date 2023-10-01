@@ -7,7 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 import styles from "./sidebar.module.sass";
 
-const SCROLL_OFFSET = 600;
+const SCROLL_OFFSET = 200;
 
 const Sidebar = () => {
     const items = {
@@ -28,7 +28,6 @@ const Sidebar = () => {
   
     useEffect(() => {
       window.addEventListener("scroll", handleScroll, { passive: true });
-  
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };
@@ -36,7 +35,7 @@ const Sidebar = () => {
   
     useEffect(() => {
       updateClosestAnchor();
-    });
+    }, [scrollPos]);
     // Create a ref for the DOM element you want to start from
     // const elementRef = useRef(null);
   
@@ -55,7 +54,7 @@ const Sidebar = () => {
             }
         }
 
-        if (scrollPos < 200) {
+        if (scrollPos < SCROLL_OFFSET/4) {
             closestAnchor = 'home'
         }
         setActiveCard(closestAnchor)
@@ -75,7 +74,8 @@ const Sidebar = () => {
     else {
         sidebarClasses.push(styles.sidebarClosed)
     }
-
+    console.log(activeCard)
+    
     const itemsHtml = Object.entries(items).map(([name, icon]) => {
         const cardClasses = Array.from(defaultCardClasses)
         if (name === activeCard) {
@@ -84,7 +84,7 @@ const Sidebar = () => {
 
         return (
             <div key={name} className={cardClasses.join(' ')}>
-                <a href={`#${name}`}>
+                <a href={`#${name}`} onClick={() => setTimeout(() => setActiveCard(name))}>
                     <div className={styles.label}>
                         {icon}
                         <span className={isOpen ? styles.show : styles.hide}>
