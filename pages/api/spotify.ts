@@ -1,5 +1,5 @@
 import queryString from 'querystring';
-import crypto from 'crypto'
+import crypto from 'crypto';
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 
@@ -8,58 +8,61 @@ let lastToken = '';
 
 export default async function handler(req, res) {
     // const endpoint = 'https://api.spotify.com/v1/me/player/recently-played'
-    const endpoint = 'https://api.spotify.com/v1/playlists/6OxOl1VenOr3gY4E0kDw7q/tracks'
+    const endpoint = 'https://api.spotify.com/v1/playlists/6OxOl1VenOr3gY4E0kDw7q/tracks';
     const token = await getToken();
     const options = {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
         },
-      };
+    };
 
     const response = await fetch(endpoint, options);
     if (response.status !== 200) {
-        res.status(response.status).send(response.statusText)
+        res.status(response.status).send(response.statusText);
         return;
     }
 
     const data = await response.json();
 
-    const trackUris= data.items?.map(item => item.track.id)
+    const trackUris = data.items?.map((item) => item.track.id);
 
-    const randomUri = trackUris[Math.floor(trackUris.length * Math.random())]
+    const randomUri = trackUris[Math.floor(trackUris.length * Math.random())];
 
     // const iframe = await getIFrame(randomUri)
     // if (!iframe) {
     //     res.status(404).send('not found')
     // }
     res.status(200).send(randomUri);
-}  
+}
 
 async function getIFrame(uri) {
     const token = await getToken();
     const options = {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
         },
-      };
+    };
 
     // const response = await fetch(`https://open.spotify.com/embed-track/iframe-api/v1/${uri}`, options);
-    const response = await fetch(`https://open.spotify.com/embed-podcast/iframe-api/v1/spotify:episode:00ANHlyEzJBowXkrljDvzr`, options);
+    const response = await fetch(
+        `https://open.spotify.com/embed-podcast/iframe-api/v1/spotify:episode:00ANHlyEzJBowXkrljDvzr`,
+        options
+    );
 
     if (response.status !== 200) {
         return;
     }
 
-    const iframe = await response.text()
-    return iframe
+    const iframe = await response.text();
+    return iframe;
 }
 
 async function getToken() {
-    const endpoint = 'https://accounts.spotify.com/api/token'
+    const endpoint = 'https://accounts.spotify.com/api/token';
 
     const requestBody = {
         grant_type: 'client_credentials',
@@ -70,17 +73,17 @@ async function getToken() {
     const options = {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: queryString.stringify(requestBody),
-    }
+    };
 
     if (!lastToken || Date.now() > tokenExpiresAt) {
-        const response = await fetch(endpoint, options)
+        const response = await fetch(endpoint, options);
         const data = await response.json();
 
         lastToken = data.access_token;
-        tokenExpiresAt = Date.now() + data.expires_in * 1000
+        tokenExpiresAt = Date.now() + data.expires_in * 1000;
         return data.access_token;
     }
 
@@ -88,7 +91,7 @@ async function getToken() {
 }
 
 // async function login() {
-//     const redirect_uri = 'http://localhost:3002/';    
+//     const redirect_uri = 'http://localhost:3002/';
 //     const state = crypto.randomBytes(20).toString('hex');
 //     const scope = 'user-read-private user-read-email';
 
@@ -105,7 +108,7 @@ async function getToken() {
 //         res.status(response.status).send(response.statusText)
 //         return;
 //     }
-    
+
 //     const data = await response.text()
 //     console.log(data)
 //     return data;

@@ -1,31 +1,35 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.11",
-    "@mui/material": "^5.14.11",
-    "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sass": "^1.68.0"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.5.4",
-    "@types/node": "20.8.0",
-    "@types/react": "18.2.23",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
-    "eslint": "^8.50.0",
-    "eslint-plugin-react": "^7.33.2",
-    "typescript": "^5.2.2"
-  }
+    "private": true,
+    "scripts": {
+        "build": "next build",
+        "dev": "next dev",
+        "start": "next start",
+        "format": "prettier . --write"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.14.11",
+        "@mui/material": "^5.14.11",
+        "next": "latest",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "sass": "^1.68.0",
+        "three": "^0.164.1"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.5.4",
+        "@types/node": "20.8.0",
+        "@types/react": "18.2.23",
+        "@types/three": "^0.164.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.3",
+        "@typescript-eslint/parser": "^6.7.3",
+        "eslint": "^8.50.0",
+        "eslint-plugin-react": "^7.33.2",
+        "prettier": "3.2.5",
+        "typescript": "^5.2.2"
+    }
 }

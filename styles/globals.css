@@ -1,35 +1,38 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    padding: 0;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+        sans-serif;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-html, body, p {
-  font-size: 13px
+html,
+body,
+p {
+    font-size: 13px;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 #embed-iframe {
-  min-width: 15rem;
-  width: 100%;
-  /* margin-left: 30%; */
-  filter: drop-shadow(10px 10px 3px rgba(150, 150, 150, 0.829))
+    min-width: 15rem;
+    width: 100%;
+    /* margin-left: 30%; */
+    filter: drop-shadow(10px 10px 3px rgba(150, 150, 150, 0.829));
 }
