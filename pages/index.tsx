@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import commonStyles from '../components/common.module.sass';
 import styles from './main.module.sass';
 
 import Sidebar from '../components/sidebar/sidebar';
 import Home from '../components/home/home';
+import Background from '../components/background/cylinders';
 
 export default function Main() {
     return (
         <>
+            <Background />
             <Sidebar />
             <div className={commonStyles.container}>
                 <Head>

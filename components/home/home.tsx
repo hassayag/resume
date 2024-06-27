@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
-import MyThree from '../three';
 
 const Home = () => {
     const embedSpotify = async () => {
@@ -41,9 +40,8 @@ const Home = () => {
     }, []);
 
     return (
-        <>
+        <div className={styles.column}>
             <a id="home" />
-            <MyThree />
             <h1 className={styles.title}>
                 Harry <a>Assayag</a>
                 <br />
@@ -127,7 +125,7 @@ const Home = () => {
                     </p>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
