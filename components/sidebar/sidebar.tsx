@@ -73,7 +73,6 @@ const Sidebar = () => {
     } else {
         sidebarClasses.push(styles.sidebarClosed);
     }
-    console.log(activeCard);
 
     const itemsHtml = Object.entries(items).map(([name, icon]) => {
         const cardClasses = Array.from(defaultCardClasses);

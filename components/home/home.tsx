@@ -12,27 +12,24 @@ const Home = () => {
 
             element.innerHTML = `
         <iframe
-          id="spotify-iframe"
-          style="border-radius:12px"
-          src="https://open.spotify.com/embed/track/${uri}?utm_source=generator"
-          width="100%"
-          height="200px"
-          padding-right="25%"
-          frameBorder="0"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
+            id="spotify-iframe"
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/track/${uri}?utm_source=generator"
+            width="100%"
+            height="200px"
+            padding-right="25%"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
         ></iframe>
     `;
         }
-        // TODO - when iframe has loaded, get the background colour of the iframe and apply it to the theme's accent
-        // const iframe = document.getElementById('spotify-iframe');
-        // iframe.addEventListener('load', (event) => {
-        //   const iframe = document.getElementById('spotify-iframe');
-        //   console.log({event})
-        //   const spotifyBackground = document.getElementsByClassName(`BackgroundColorContainer_backgroundColorContainer__KSQbl`)
-        //   console.log({spotifyBackground})
-        // });
+
+        const iframe = document.getElementById('spotify-iframe');
+        iframe.addEventListener('load', (event) => {
+            getBackgroundColor()
+        });
     };
 
     useEffect(() => {
@@ -128,5 +125,34 @@ const Home = () => {
         </div>
     );
 };
+
+function getBackgroundColor() {
+    // const iframe = document.getElementById('spotify-iframe') as any
+
+    // const canvas = document.createElement('canvas');
+    // const ctx = canvas.getContext('2d')
+
+    // // Set canvas dimensions
+    // canvas.width = 100
+    // canvas.height = 100
+
+    // // Draw iframe content onto the canvas
+    // ctx.drawWindow( iframe.contentWindow, 0, 0, canvas.width, canvas.height, 'rgb(255,255,255)');
+
+    // // Get image data from canvas
+    // const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    // const pixelColor = getColorAtPixel(imageData, 0, 0);
+    // console.log({pixelColor})
+}
+
+function getColorAtPixel(imageData, x, y) {
+    const index = (y * imageData.width + x) * 4;
+    return {
+        r: imageData.data[index],
+        g: imageData.data[index + 1],
+        b: imageData.data[index + 2],
+        a: imageData.data[index + 3]
+    };
+}
 
 export default Home;

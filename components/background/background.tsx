@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import styles from './background.module.sass';
 import * as THREE from 'three';
 
-let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
+let camera: THREE.OrthographicCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
 const meshes: THREE.Mesh[] = []
 const AMOUNT = 50;
-const AMPLITUDE = 1
+const AMPLITUDE = 0.5
 const FREQUENCY = 0.0002
-const BOX_LENGTH = 0.9
+const BOX_LENGTH = 0.05
+const SPACING = BOX_LENGTH/10
 const COLORS: number[] = [0x886797, 0xb9a2bddc, 0xcfcd2a, 0x3f3f3f, 0x6868687c]
 
 function Background() {
@@ -16,26 +17,27 @@ function Background() {
     useEffect(() => {
         const {aspectRatio, width, height} = getScreenDimensions()
     
-        camera = new THREE.PerspectiveCamera( 150, aspectRatio, 0.1, 10 );
+        // camera = new THREE.PerspectiveCamera( 150, aspectRatio, 0.1, 10 );
+        camera = new THREE.OrthographicCamera(-1, 1, 0.5, -0.5)
         camera.viewport = new THREE.Vector4( Math.floor(width ), Math.floor(height ), Math.ceil( width ), Math.ceil( height ) );
-        camera.position.set(0,5,0)
+        camera.position.set(0,1,0)
         camera.lookAt(0, 0, 0);
-        camera.updateMatrixWorld();
+        // camera.updateMatrixWorld();
     
         scene = new THREE.Scene();
     
         scene.add( new THREE.AmbientLight( 0x999999 ) );
     
         const light = new THREE.DirectionalLight( 0xffffff, 3 );
-        light.position.set( 0.5, 0.5, 1 );
+        light.position.set( 0, 100,0);
         light.castShadow = true;
         light.shadow.camera.zoom = 4; // tighter shadow map
-        // scene.add( light );
+        scene.add( light );
     
         
         for (let i=-AMOUNT; i<AMOUNT; i++) {
             for (let j=-AMOUNT; j<AMOUNT; j++) {
-                createCube(new THREE.Vector3(i,0,j), getRandomColor())
+                createCube(new THREE.Vector3(i*(BOX_LENGTH+SPACING),0,j*(BOX_LENGTH+SPACING)), getRandomColor())
             }
         }
         // const geometryBackground = new THREE.PlaneGeometry( 100, 100 );

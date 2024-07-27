@@ -5,7 +5,7 @@ import styles from './main.module.sass';
 
 import Sidebar from '../components/sidebar/sidebar';
 import Home from '../components/home/home';
-import Background from '../components/background/cylinders';
+import Background from '../components/background/background';
 
 export default function Main() {
     return (
