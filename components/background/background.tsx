@@ -22,7 +22,7 @@ function Background() {
         camera.viewport = new THREE.Vector4( Math.floor(width ), Math.floor(height ), Math.ceil( width ), Math.ceil( height ) );
         camera.position.set(0,1,0)
         camera.lookAt(0, 0, 0);
-        // camera.updateMatrixWorld();
+        // camera.updateMatrixWorld();  
     
         scene = new THREE.Scene();
     
@@ -78,7 +78,6 @@ function createCube(pos: THREE.Vector3, color: number) {
 
 function onWindowResize() {
     const {aspectRatio, width, height} = getScreenDimensions()
-    camera.aspect = aspectRatio;
     camera.updateProjectionMatrix();
 
     camera.viewport.set(
@@ -87,7 +86,6 @@ function onWindowResize() {
         Math.ceil( width ),
         Math.ceil( height ) );
 
-    camera.aspect = aspectRatio;
     camera.updateProjectionMatrix();
 
     renderer.setSize( window.innerWidth, window.innerHeight );
