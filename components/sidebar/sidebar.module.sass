@@ -13,18 +13,6 @@
     min-width: 6rem
     z-index: 2
 
-@media (max-width: $mobile-width)
-    .sidebar
-        background-color: rgba($header-footer, 0)
-        border: none
-        box-shadow: none
-        backdrop-filter: none
-
-    .sidebarOpen
-        background-color: rgba($header-footer, 0.5)
-        backdrop-filter: blur($blur)
-        border-right: 1px solid $secondary
-
 .sidebarClosed
     transition: all 0.5s ease
 
@@ -110,3 +98,22 @@
 .show
     transition: color 0.3s ease-in
     transition-delay: 0.1s
+
+@media (max-width: $mobile-width)
+    .sidebar
+        background-color: rgba($header-footer, 0)
+        border: none
+        box-shadow: none
+        backdrop-filter: none
+
+    .sidebarOpen
+        background-color: rgba($header-footer, 0.5)
+        backdrop-filter: blur($blur)
+        border-right: 1px solid $secondary
+
+    .card
+        backdrop-filter: blur($blur)
+        
+    .hamburger
+        backdrop-filter: blur($blur)
+        border-radius: 8px
