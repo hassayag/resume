@@ -72,6 +72,7 @@ const Sidebar = () => {
         defaultCardClasses.push(styles.clickable);
     } else {
         sidebarClasses.push(styles.sidebarClosed);
+        defaultCardClasses.push(styles.clickable);
     }
 
     const itemsHtml = Object.entries(items).map(([name, icon]) => {

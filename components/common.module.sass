@@ -8,8 +8,10 @@
   justify-content: flex-start
   align-items: center
   font-size: 18px
-  margin-left: max(30%, 14rem)
-  max-width: 40%
+
+  @media (min-width: $mobile-width)
+    margin-left: max(30%, 14rem)
+    max-width: 40%
 
 .section
   padding: 5%
@@ -22,7 +24,7 @@
   &Border
     padding: 5% 0 5% 0
     border-top: 1px dashed $divider
-
+  
 .heading
   font-size: 2rem
   text-align: left

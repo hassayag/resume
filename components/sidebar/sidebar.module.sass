@@ -7,11 +7,23 @@
     height: 100%
     border-right: 2px solid $secondary
     box-shadow: 0 5px 6px 0 $shadow
-    background-color: rgba($header-footer, 0.8)
+    background-color: rgba($header-footer, 0.7)
     backdrop-filter: blur($blur)
     width: 6rem
     min-width: 6rem
     z-index: 2
+
+@media (max-width: $mobile-width)
+    .sidebar
+        background-color: rgba($header-footer, 0)
+        border: none
+        box-shadow: none
+        backdrop-filter: none
+
+    .sidebarOpen
+        background-color: rgba($header-footer, 0.5)
+        backdrop-filter: blur($blur)
+        border-right: 1px solid $secondary
 
 .sidebarClosed
     transition: all 0.5s ease
@@ -27,7 +39,9 @@
     min-width: 11rem
     color: $text-dark
     transition: all 0.5s ease
-
+    background-color: rgba($header-footer, 0.9)
+    backdrop-filter: blur($blur)
+    border-right: 2px solid $secondary
 
     .hamburger
         transition: transform 0.5s ease
