@@ -10,15 +10,16 @@ const FREQUENCY = 0.0002
 const BOX_LENGTH = 0.05
 const SPACING = BOX_LENGTH/10
 const COLORS: number[] = [0x886797, 0xb9a2bddc, 0xcfcd2a, 0x3f3f3f, 0x6868687c]
+const DIMENSION_SCALER = 0.05
 
 function Background() {
     const refContainer = useRef(null);
 
     useEffect(() => {
         const {aspectRatio, width, height} = getScreenDimensions()
-    
+        console.log(width, height)
         // camera = new THREE.PerspectiveCamera( 150, aspectRatio, 0.1, 10 );
-        camera = new THREE.OrthographicCamera(-1, 1, 0.5, -0.5)
+        camera = new THREE.OrthographicCamera(-width * DIMENSION_SCALER, width * DIMENSION_SCALER, height * DIMENSION_SCALER, -height * DIMENSION_SCALER)
         camera.viewport = new THREE.Vector4( Math.floor(width ), Math.floor(height ), Math.ceil( width ), Math.ceil( height ) );
         camera.position.set(0,1,0)
         camera.lookAt(0, 0, 0);
@@ -78,8 +79,12 @@ function createCube(pos: THREE.Vector3, color: number) {
 
 function onWindowResize() {
     const {aspectRatio, width, height} = getScreenDimensions()
+    camera.left = -width * DIMENSION_SCALER,
+    camera.right = width * DIMENSION_SCALER
+    camera.top = height * DIMENSION_SCALER
+    camera.bottom = -height * DIMENSION_SCALER
+    
     camera.updateProjectionMatrix();
-
     camera.viewport.set(
         Math.floor( width ),
         Math.floor( height ),

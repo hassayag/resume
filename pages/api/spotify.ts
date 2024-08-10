@@ -54,6 +54,7 @@ async function getIFrame(uri) {
     );
 
     if (response.status !== 200) {
+        throw new Error(`Spotify request failed - ${response.body}`)
         return;
     }
 
