@@ -10,7 +10,7 @@ import Background from '../components/background/background';
 export default function Main() {
     return (
         <>
-            {/* <Background /> */}
+            <Background />
             <Sidebar />
             <div className={commonStyles.container}>
                 <Head>
