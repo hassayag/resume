@@ -1,13 +1,16 @@
 import { EventEmitter } from "events"
 import {Mesh} from 'three';
+import { AMOUNT } from "./background";
 
+const FIRE_SPREAD_CHANCE = 0.6
+const UPDATE_INTERVAL = 500
 
 export class FireSim {
     emitter = new EventEmitter()
     private fires: Fire[] = []
     private intervalId: NodeJS.Timeout
     constructor(private meshes: Mesh[]) {
-        this.intervalId = setInterval(() => this.update(), 1000)
+        this.intervalId = setInterval(() => this.updateLoop(), UPDATE_INTERVAL)
     }
 
     startFire(mesh: Mesh) {
@@ -20,7 +23,7 @@ export class FireSim {
         this.fires.push(fire)
     }
 
-    update() {
+    updateLoop() {
         for (const fire of this.fires) {
             switch(fire.level) {
                 case 'new':
@@ -28,15 +31,38 @@ export class FireSim {
                     break
                 case 'red':
                     fire.update('orange')
+                    this.spread(fire)
                     break               
                 case 'orange':
                     fire.update('black')
                     break                
                 case 'black':
-                    this.killFire(fire)
+                    // this.killFire(fire)
                     break
             }
         }
+    }
+
+    spread(fire: Fire) {
+        const fireIndex = this.meshes.findIndex(mesh => mesh.id === fire.id)
+        if (fireIndex == null) {
+            return
+        }
+
+        const adjacentIndices = [
+            fireIndex + 1,
+            fireIndex - 1,
+            fireIndex + 2*AMOUNT,
+            fireIndex - 2*AMOUNT
+        ]
+
+        adjacentIndices
+            // make sure they are within bounds of array
+            .filter(index => index < this.meshes.length && index > -1)
+            // fire wont always spread
+            .filter(index => Math.random() < FIRE_SPREAD_CHANCE)
+            .filter(index => !this.fires[index])
+            .forEach(index => this.startFire(this.meshes[index]))
     }
 
     killFire(fireToKill: Fire) {
@@ -55,11 +81,7 @@ export type FireUpdateEvent = {
 }
 class Fire {
     constructor(public mesh: Mesh, public level: FireLevel, private emitter: EventEmitter) {
-        this.start()
-    }
-
-    private start() {
-        this.update('red')
+        this.update('new')
     }
 
     public update(level: FireLevel) {
@@ -67,6 +89,7 @@ class Fire {
         const event: FireUpdateEvent = {mesh: this.mesh, level}
         this.emitter.emit('update', event)
     }
+
 
     get id() {
         return this.mesh.id

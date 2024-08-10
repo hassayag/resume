@@ -5,7 +5,7 @@ import { FireLevel, FireSim, FireUpdateEvent } from './fire-sim';
 
 let camera: THREE.OrthographicCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
 const meshes: THREE.Mesh[] = []
-const AMOUNT = 50;
+export const AMOUNT = 50;
 const AMPLITUDE = 0.5
 const FREQUENCY = 0.0002
 const BOX_LENGTH = 0.05
@@ -27,7 +27,7 @@ function Background() {
             red: 0xff0000,
             orange: 0xff9100,
             black: 0x424242,
-            new: 1
+            new: 0xff0000
         }
 
         fireSim.emitter.on('update', (event: FireUpdateEvent) => {
