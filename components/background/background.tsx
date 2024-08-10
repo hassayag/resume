@@ -10,7 +10,8 @@ const AMPLITUDE = 0.5
 const FREQUENCY = 0.0002
 const BOX_LENGTH = 0.05
 const SPACING = BOX_LENGTH/10
-const COLORS: number[] = [0x886797, 0xb9a2bddc, 0xcfcd2a, 0x3f3f3f, 0x6868687c]
+const COLORS = [0x009933, 0x34a039, 0x94a420]
+// const COLORS: number[] = [0x886797, 0xb9a2bddc, 0xcfcd2a, 0x3f3f3f, 0x6868687c]
 const DIMENSION_SCALER = 0.05
 
 let raycaster: THREE.Raycaster, pointer: THREE.Vector2;
@@ -21,21 +22,16 @@ function Background() {
     const refContainer = useRef(null);
 
     useEffect(() => {
-        fireSim = new FireSim(meshes.map(mesh => mesh.id))
+        fireSim = new FireSim(meshes)
         const levelToColorMap: Record<FireLevel, number> = {
             red: 0xff0000,
             orange: 0xff9100,
-            black: 0x424242
+            black: 0x424242,
+            new: 1
         }
 
         fireSim.emitter.on('update', (event: FireUpdateEvent) => {
-            console.log({event})
-            const mesh = meshes.find(mesh => mesh.id === event.meshId)
-            if (!mesh) {
-                return
-            }
-
-            mesh.material =  new THREE.MeshPhongMaterial( { color: levelToColorMap[event.level]} );
+            event.mesh.material =  new THREE.MeshPhongMaterial( { color: levelToColorMap[event.level]} );
         })
 
         const {width, height, aspectRatio} = getScreenDimensions()
@@ -127,10 +123,10 @@ function getScreenDimensions() {
 function animate(time: number) {
     camera.updateMatrixWorld();
     meshes.forEach((mesh, index) => {
-        const changeColor = Math.random()>0.999
-        if (changeColor) {
-            mesh.material = new THREE.MeshPhongMaterial( { color: getRandomColor() } );
-        }
+        // const changeColor = Math.random()>0.999
+        // if (changeColor) {
+        //     mesh.material = new THREE.MeshPhongMaterial( { color: getRandomColor() } );
+        // }
         // const offset = (index/meshes.length) * AMPLITUDE * 2
         // mesh.position.y = (AMPLITUDE) * Math.sin(FREQUENCY * time + offset)
     })
@@ -144,14 +140,17 @@ function raycast() {
     raycaster.setFromCamera( pointer, camera );
     const intersects = raycaster.intersectObjects( scene.children, false );
 
-    for (const intersect of intersects ) {
-        const mesh = meshes.find(mesh => mesh.id === intersect.object.id)
-        if (!mesh) {
-            continue
-        }
-
-        fireSim.startFire(mesh.id)
+    const intersect = intersects[0] 
+    if (!intersect) {
+        return
     }
+
+    const mesh = meshes.find(mesh => mesh.id === intersect.object.id)
+    if (!mesh) {
+        return
+    }
+
+    fireSim.startFire(mesh)
 }
 
 function getRandomColor() {

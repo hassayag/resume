@@ -1,52 +1,74 @@
 import { EventEmitter } from "events"
+import {Mesh} from 'three';
+
 
 export class FireSim {
     emitter = new EventEmitter()
     private fires: Fire[] = []
+    private intervalId: NodeJS.Timeout
+    constructor(private meshes: Mesh[]) {
+        this.intervalId = setInterval(() => this.update(), 1000)
+    }
 
-    constructor(private meshIds: number[]) {}
-    
-    startFire(meshId: number) {
-        if (this.fires.find(fire => fire.meshId === meshId)) {
+    startFire(mesh: Mesh) {
+        const fireExists = this.fires.find(fire => fire.id === mesh.id)
+        if (fireExists) {
             return
         }
 
-        const fire = new Fire(meshId, 'red', this.emitter)
+        const fire = new Fire(mesh, 'new', this.emitter)
         this.fires.push(fire)
+    }
+
+    update() {
+        for (const fire of this.fires) {
+            switch(fire.level) {
+                case 'new':
+                    fire.update('red')
+                    break
+                case 'red':
+                    fire.update('orange')
+                    break               
+                case 'orange':
+                    fire.update('black')
+                    break                
+                case 'black':
+                    this.killFire(fire)
+                    break
+            }
+        }
+    }
+
+    killFire(fireToKill: Fire) {
+        this.fires = this.fires.filter(fire => fire.id !== fireToKill.id)
+    }
+
+    stop() {
+        clearInterval(this.intervalId)
     }
 }
 
-export type FireLevel = 'red' | 'orange' | 'black'
+export type FireLevel = 'red' | 'orange' | 'black' | 'new'
 export type FireUpdateEvent = {
-    meshId: number
+    mesh: Mesh
     level: FireLevel
 }
 class Fire {
-    constructor(public meshId: number, private level: FireLevel, private emitter: EventEmitter) {
+    constructor(public mesh: Mesh, public level: FireLevel, private emitter: EventEmitter) {
         this.start()
     }
 
-    
     private start() {
         this.update('red')
     }
 
-    private update(level: FireLevel) {
+    public update(level: FireLevel) {
         this.level = level
-        const event: FireUpdateEvent = {meshId: this.meshId, level}
+        const event: FireUpdateEvent = {mesh: this.mesh, level}
         this.emitter.emit('update', event)
-        if (this.level === 'red') {
-            setTimeout(() => this.update('orange'), 1000)
-        }
-        if (this.level === 'orange') {
-            setTimeout(() => {
-                this.update('black')
-                this.stop()
-            }, 1000)
-        }
     }
 
-    private stop() {
-        this.emitter.removeAllListeners()
+    get id() {
+        return this.mesh.id
     }
 }
