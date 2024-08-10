@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './background.module.sass';
 import * as THREE from 'three';
+import { FireLevel, FireSim, FireUpdateEvent } from './fire-sim';
 
 let camera: THREE.OrthographicCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
 const meshes: THREE.Mesh[] = []
@@ -14,11 +15,29 @@ const DIMENSION_SCALER = 0.05
 
 let raycaster: THREE.Raycaster, pointer: THREE.Vector2;
 let isClick = false
+let fireSim: FireSim
 
 function Background() {
     const refContainer = useRef(null);
 
     useEffect(() => {
+        fireSim = new FireSim(meshes.map(mesh => mesh.id))
+        const levelToColorMap: Record<FireLevel, number> = {
+            red: 0xff0000,
+            orange: 0xff9100,
+            black: 0x424242
+        }
+
+        fireSim.emitter.on('update', (event: FireUpdateEvent) => {
+            console.log({event})
+            const mesh = meshes.find(mesh => mesh.id === event.meshId)
+            if (!mesh) {
+                return
+            }
+
+            mesh.material =  new THREE.MeshPhongMaterial( { color: levelToColorMap[event.level]} );
+        })
+
         const {width, height, aspectRatio} = getScreenDimensions()
         console.log(width, height)
         camera = new THREE.OrthographicCamera(-width * DIMENSION_SCALER, width * DIMENSION_SCALER, height * DIMENSION_SCALER, -height * DIMENSION_SCALER)
@@ -44,7 +63,7 @@ function Background() {
                 createCube(new THREE.Vector3(i*(BOX_LENGTH+SPACING),0,j*(BOX_LENGTH+SPACING)), getRandomColor())
             }
         }
-    
+
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
@@ -127,7 +146,11 @@ function raycast() {
 
     for (const intersect of intersects ) {
         const mesh = meshes.find(mesh => mesh.id === intersect.object.id)
-        mesh.material =  new THREE.MeshPhongMaterial( { color: 0xff0000 } );
+        if (!mesh) {
+            continue
+        }
+
+        fireSim.startFire(mesh.id)
     }
 }
 
