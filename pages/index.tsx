@@ -15,7 +15,7 @@ export default function Main() {
     
     return (
         <>
-            <Background />
+            {/* <Background /> */}
             <Sidebar toggleHidePage={toggleHidePage}/>
             <div className={commonStyles.container}>
                 <Head>
