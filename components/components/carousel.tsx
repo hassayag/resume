@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./carousel.module.sass";
+import sideBarStyles from "../sidebar/sidebar.module.sass";
 
 type Item = {
     heading: string,
@@ -58,7 +59,7 @@ export default function Carousel() {
 
     return (
         <div className={styles.carousel}>
-        <button onClick={moveLeft}>left</button>
+        <button className={[styles.button, sideBarStyles.clickable].join(' ')} onClick={moveLeft}>&#x3c;</button>
         <div className={styles.container}>
             <div className={styles.itemsContainer} style={itemsContainerStyle}>
                 {items.map((item, index) => {
@@ -69,7 +70,7 @@ export default function Carousel() {
                 })}
             </div>
         </div>
-        <button onClick={moveRight}>right</button>
+        <button className={[styles.button, sideBarStyles.clickable].join(' ')} onClick={moveRight}>&#62;</button>
     </div>)
 }
 

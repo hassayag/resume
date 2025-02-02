@@ -3,6 +3,7 @@
 .carousel
     display: flex
     justify-content: center
+    align-items: center
     width: 100%
 
 .container
@@ -22,6 +23,15 @@
     flex-basis: 0
     transition: left 1s
 
+.button
+    height: 50px
+    width: 20px
+    background-color: $background
+    border: 1px solid $divider
+    text-align: center
+    margin: 10px
+    transition: all 0.3s ease
+
 .item
     display: flex
     flex-direction: column
@@ -34,6 +44,9 @@
     background-color: $background
     border: 1px solid $secondary
     border-radius:4px
+    box-shadow: 0px 0px 15px rgba($glow, 0.5)
+
+    // .active
 
     h3
         font-size: 15px
