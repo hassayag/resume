@@ -6,12 +6,12 @@
     position: fixed
     height: 100%
     border-right: 2px solid $secondary
-    box-shadow: 0 5px 6px 0 $shadow
+    // box-shadow: 0 5px 6px 0 $shadow
     background-color: rgba($header-footer, 0.7)
     backdrop-filter: blur($blur)    
     width: 70px
     min-width: 70px
-    z-index: 2
+    z-index: 1
 
 .sidebarClosed
     transition: all 0.5s ease
@@ -56,7 +56,7 @@
             
     a div
         padding: 1rem
-        z-index: 1   
+        z-index: 2   
     
 .activeCard
     color: $text-light !important

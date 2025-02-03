@@ -8,7 +8,6 @@ type Item = {
     body: string
     tags?: string[]
     img?: string,
-    download?: string
 }
 
 const GAP = 30
@@ -20,7 +19,7 @@ export default function Carousel() {
         {   
             heading: 'Deadlock Wiki Bot',
             link: 'https://github.com/deadlock-wiki/deadbot',
-            body: `My open-source project that automates the scraping and uploading of data from Valve's "Deadlock" to a community-run wiki`,
+            body: `My open-source project that automates the scraping and uploading of data from Valve's "Deadlock" to the community-run <a href="https://deadlock.wiki/"> wiki</a>`,
             tags: ['python']
         },
         {   
@@ -32,8 +31,7 @@ export default function Carousel() {
         {
             heading: 'Synthesiser Imitation',
             link: 'https://github.com/hassayag/autosynthesis',
-            download: 'autosynthesis.pdf',
-            body: 'A convolutional neural network that aims to mimic an incoming sound by adjusting the parameters of a subtractive synthesiser. Download the research paper ',
+            body: 'A convolutional neural network that aims to mimic an incoming sound by adjusting the parameters of a subtractive synthesiser. Download the research paper <a href="autosynthesis.pdf" download="autosynthesis.pdf">here</a> ',
             tags: ['ai', 'python']
         }
     ]
@@ -98,10 +96,7 @@ function CarouselItem({item, width, active}: {item: Item, width: number, active:
     return (<div className={itemStyles.join(' ')} style={style}>
         <h3>{item.heading}</h3>
         <a className={styles.link} href={item.link}>{item.link.slice(8)}</a>
-        <span>
-            {item.body} 
-            {item.download ? <a href={item.download} download={item.download}>here</a> : ''}
-        </span>
+        <p dangerouslySetInnerHTML={{ __html: item.body }} />
         <div className={styles.tags}>{item.tags?.map((tag, index) => <Tag key={index} label={tag}/>)}</div>
     </div>)
 }
