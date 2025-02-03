@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
 import Carousel from '../carousel/carousel'
+import {Email, Phone} from '@mui/icons-material';
 
 const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
     const embedSpotify = async () => {
@@ -26,11 +27,6 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
         ></iframe>
     `;
         }
-
-        const iframe = document.getElementById('spotify-iframe');
-        iframe.addEventListener('load', (event) => {
-            getBackgroundColor()
-        });
     };
 
     useEffect(() => {
@@ -73,13 +69,7 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>About me</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
+                        Hey, I'm Harry, a full-stack software developer with a wide range of experience, from COBOL to Typescript! Over the last three years my focus has been on backend Node web development and AWS infrastructure. Besides coding, I am privvy to music production, sourdough, and unnecessarily long boardgames.
                     </p>
                 </div>
             </div>
@@ -109,48 +99,25 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <a className="anchor" id="contact" />
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>Contact</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
-                    </p>
+                    <div className={styles.contactItems}>
+                        <div className={styles.item}>
+                            <Email style={{position: 'relative', bottom: 2}}/>
+                            <div><a href='mailto:haassayag@gmail.com'>haassayag@gmail.com</a></div>
+                        </div>
+
+                        <a className=   {styles.item} href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
+                            <img style={{width: 20, position: 'relative', bottom: 2}} src="/linkedin-blue.svg" alt="linkedin" />
+                            <span>harryassayag</span>
+                        </a>        
+                        <a className={styles.item} href="https://github.com/hassayag" target="_blank" rel="noopener noreferrer">
+                            <img style={{width: 20, position: 'relative', bottom: 2}} src="/github.svg" alt="github" />
+                            <span>hassayag</span>
+                        </a>          
+                    </div>                    
                 </div>
             </div>
         </div>
     </>);
 };
-
-function getBackgroundColor() {
-    // const iframe = document.getElementById('spotify-iframe') as any
-
-    // const canvas = document.createElement('canvas');
-    // const ctx = canvas.getContext('2d')
-
-    // // Set canvas dimensions
-    // canvas.width = 100
-    // canvas.height = 100
-
-    // // Draw iframe content onto the canvas
-    // ctx.drawWindow( iframe.contentWindow, 0, 0, canvas.width, canvas.height, 'rgb(255,255,255)');
-
-    // // Get image data from canvas
-    // const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    // const pixelColor = getColorAtPixel(imageData, 0, 0);
-    // console.log({pixelColor})
-}
-
-function getColorAtPixel(imageData, x, y) {
-    const index = (y * imageData.width + x) * 4;
-    return {
-        r: imageData.data[index],
-        g: imageData.data[index + 1],
-        b: imageData.data[index + 2],
-        a: imageData.data[index + 3]
-    };
-}
 
 export default Home;

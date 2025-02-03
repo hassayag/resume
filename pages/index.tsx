@@ -40,7 +40,7 @@ export default function Main() {
                     href="https://github.com/hassayag/resume"
                     rel="noopener noreferrer"
                 >
-                    Source code <img src="/github.svg" alt="Vercel" className={styles.logo} />
+                    Source code <img src="/github.svg" alt="Github" className={styles.logo} />
                 </a>
             </footer>
         </div>

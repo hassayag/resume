@@ -97,7 +97,7 @@ function CarouselItem({item, width, active}: {item: Item, width: number, active:
 
     return (<div className={itemStyles.join(' ')} style={style}>
         <h3>{item.heading}</h3>
-        <a href={item.link}>{item.link.slice(8)}</a>
+        <a className={styles.link} href={item.link}>{item.link.slice(8)}</a>
         <span>
             {item.body} 
             {item.download ? <a href={item.download} download={item.download}>here</a> : ''}
