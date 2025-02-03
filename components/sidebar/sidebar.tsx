@@ -9,7 +9,7 @@ import styles from './sidebar.module.sass';
 
 const SCROLL_OFFSET = 200;
 
-const Sidebar = () => {
+const Sidebar = ({toggleHidePage}: {toggleHidePage: () => void}) => {
     const items = {
         home: <HomeIcon className={styles.icon} />,
         about: <InfoIcon className={styles.icon} />,
@@ -102,6 +102,7 @@ const Sidebar = () => {
                     <img src="/hamburger.svg" alt="hamburger" />
                 </button>
                 {itemsHtml}
+                <button className={styles.firebutton} onClick={() => toggleHidePage()}>🔥</button>
             </div>
         </>
     );

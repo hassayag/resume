@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import commonStyles from '../components/common.module.sass';
 import styles from './main.module.sass';
@@ -8,10 +8,15 @@ import Home from '../components/home/home';
 import Background from '../components/background/background';
 
 export default function Main() {
+    const [pageIsHidden, setPageIsHidden] = useState(false)
+    const toggleHidePage = () => {
+        setPageIsHidden(!pageIsHidden)
+    }
+    
     return (
         <>
-            {/* <Background /> */}
-            <Sidebar />
+            <Background />
+            <Sidebar toggleHidePage={toggleHidePage}/>
             <div className={commonStyles.container}>
                 <Head>
                     <title>harry.assayag</title>
@@ -19,7 +24,7 @@ export default function Main() {
                 </Head>
 
                 <main>
-                    <Home />
+                    <Home pageIsHidden={pageIsHidden}/>
                 </main>
             </div>
             <footer className={styles.footer}>

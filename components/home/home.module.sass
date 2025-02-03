@@ -48,7 +48,11 @@
   padding: 1rem
   background-color: rgba($header-footer, 0.95)
   backdrop-filter: blur($blur)
+  transition: opacity 0.5s ease
 
 @media (max-width: $mobile-width)
   .column
     width: 100vw
+
+.hide 
+  opacity: 0

@@ -1,29 +1,47 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './background.module.sass';
 import * as THREE from 'three';
+import { FireLevel, FireSim, FireUpdateEvent } from './fire-sim';
 
 let camera: THREE.OrthographicCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
 const meshes: THREE.Mesh[] = []
-const AMOUNT = 50;
+export const AMOUNT = 50;
 const AMPLITUDE = 0.5
 const FREQUENCY = 0.0002
 const BOX_LENGTH = 0.05
 const SPACING = BOX_LENGTH/10
-const COLORS: number[] = [0x886797, 0xb9a2bddc, 0xcfcd2a, 0x3f3f3f, 0x6868687c]
+const COLORS = [0x009933, 0x34a039, 0x94a420]
+// const COLORS: number[] = [0x886797, 0xb9a2bddc, 0xcfcd2a, 0x3f3f3f, 0x6868687c]
 const DIMENSION_SCALER = 0.05
+
+let raycaster: THREE.Raycaster, pointer: THREE.Vector2;
+let isClick = false
+let fireSim: FireSim
 
 function Background() {
     const refContainer = useRef(null);
 
     useEffect(() => {
-        const {aspectRatio, width, height} = getScreenDimensions()
+        fireSim = new FireSim(meshes)
+        const levelToColorMap: Record<FireLevel, number> = {
+            red: 0xff0000,
+            orange: 0xff9100,
+            black: 0x424242,
+            new: 0xff0000
+        }
+
+        fireSim.emitter.on('update', (event: FireUpdateEvent) => {
+            event.mesh.material =  new THREE.MeshPhongMaterial( { color: levelToColorMap[event.level]} );
+        })
+
+        const {width, height, aspectRatio} = getScreenDimensions()
         console.log(width, height)
-        // camera = new THREE.PerspectiveCamera( 150, aspectRatio, 0.1, 10 );
         camera = new THREE.OrthographicCamera(-width * DIMENSION_SCALER, width * DIMENSION_SCALER, height * DIMENSION_SCALER, -height * DIMENSION_SCALER)
+        // camera = new THREE.PerspectiveCamera( 150, aspectRatio, 0.1, 10 );
+
         camera.viewport = new THREE.Vector4( Math.floor(width ), Math.floor(height ), Math.ceil( width ), Math.ceil( height ) );
         camera.position.set(0,1,0)
         camera.lookAt(0, 0, 0);
-        // camera.updateMatrixWorld();  
     
         scene = new THREE.Scene();
     
@@ -41,22 +59,21 @@ function Background() {
                 createCube(new THREE.Vector3(i*(BOX_LENGTH+SPACING),0,j*(BOX_LENGTH+SPACING)), getRandomColor())
             }
         }
-        // const geometryBackground = new THREE.PlaneGeometry( 100, 100 );
-        // const materialBackground = new THREE.MeshPhongMaterial( { color: 0x000066 } );
-        
-        // const background = new THREE.Mesh( geometryBackground, materialBackground );
-        // background.receiveShadow = true;
-        // background.position.set( 0, 0, - 1 );
-        // scene.add( background );
-    
+
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio( window.devicePixelRatio );
         renderer.setSize( window.innerWidth, window.innerHeight );
-        renderer.setAnimationLoop( animate );
-        renderer.shadowMap.enabled = true;
+        // renderer.shadowMap.enabled = true;
         document.body.appendChild( renderer.domElement );
         refContainer.current && refContainer.current.appendChild(renderer.domElement);
-    
+        
+        // raycasting for user interaction
+        raycaster = new THREE.Raycaster();
+        pointer = new THREE.Vector2();
+
+        renderer.setAnimationLoop( animate );
+        // window.addEventListener( 'pointermove', onPointerMove );
+        window.addEventListener('click', onPointerMove)
         window.addEventListener( 'resize', onWindowResize );
     }, []);
     
@@ -64,10 +81,10 @@ function Background() {
 }
 
 function createCube(pos: THREE.Vector3, color: number) {
-    const geometryCylinder = new THREE.BoxGeometry( BOX_LENGTH, BOX_LENGTH, BOX_LENGTH );
+    const boxGeometry = new THREE.BoxGeometry( BOX_LENGTH, BOX_LENGTH, BOX_LENGTH );
     const materialCylinder = new THREE.MeshPhongMaterial( { color } );
 
-    const mesh = new THREE.Mesh( geometryCylinder, materialCylinder)
+    const mesh = new THREE.Mesh( boxGeometry, materialCylinder)
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     mesh.position.x = pos.x
@@ -78,12 +95,12 @@ function createCube(pos: THREE.Vector3, color: number) {
 }
 
 function onWindowResize() {
-    const {aspectRatio, width, height} = getScreenDimensions()
+    const {width, height} = getScreenDimensions()
     camera.left = -width * DIMENSION_SCALER,
     camera.right = width * DIMENSION_SCALER
     camera.top = height * DIMENSION_SCALER
     camera.bottom = -height * DIMENSION_SCALER
-    
+
     camera.updateProjectionMatrix();
     camera.viewport.set(
         Math.floor( width ),
@@ -94,7 +111,6 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
 
     renderer.setSize( window.innerWidth, window.innerHeight );
-
 }
 
 function getScreenDimensions() {
@@ -105,22 +121,51 @@ function getScreenDimensions() {
 }
 
 function animate(time: number) {
+    camera.updateMatrixWorld();
     meshes.forEach((mesh, index) => {
-        const changeColor = Math.random()>0.999
-        if (changeColor) {
-            mesh.material = new THREE.MeshPhongMaterial( { color: getRandomColor() } );
-        }
-        const offset = (index/meshes.length) * AMPLITUDE * 2
-        mesh.position.y = (AMPLITUDE) * Math.sin(FREQUENCY * time + offset)
-        // mesh.rotation.z += 0.01;
+        // const changeColor = Math.random()>0.999
+        // if (changeColor) {
+        //     mesh.material = new THREE.MeshPhongMaterial( { color: getRandomColor() } );
+        // }
+        // const offset = (index/meshes.length) * AMPLITUDE * 2
+        // mesh.position.y = (AMPLITUDE) * Math.sin(FREQUENCY * time + offset)
     })
-
+    if (isClick) {
+        raycast()
+    }
     renderer.render( scene, camera );
+}
+
+function raycast() {
+    raycaster.setFromCamera( pointer, camera );
+    const intersects = raycaster.intersectObjects( scene.children, false );
+
+    const intersect = intersects[0] 
+    if (!intersect) {
+        return
+    }
+
+    const mesh = meshes.find(mesh => mesh.id === intersect.object.id)
+    if (!mesh) {
+        return
+    }
+
+    fireSim.startFire(mesh)
 }
 
 function getRandomColor() {
     const colorIndex = Math.floor(Math.random() *COLORS.length)
     return COLORS[colorIndex]
+}
+
+function onPointerMove(event: PointerEvent) {
+    isClick = true
+    setTimeout(() => isClick = false, 100)
+    // values between -1 and 1
+    pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+
 }
 
 export default Background

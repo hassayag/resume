@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
 
-const Home = () => {
+const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
     const embedSpotify = async () => {
         const response = await fetch('/api/spotify');
         const uri = await response.text();
@@ -36,8 +36,13 @@ const Home = () => {
         embedSpotify();
     }, []);
 
-    return (
-        <div className={styles.column}>
+    const homeClass = [styles.column]
+    if (pageIsHidden) {
+        homeClass.push(styles.hide)
+    }
+
+    return (<>
+        <div className={homeClass.join(' ')}>
             <a id="home" />
             <h1 className={styles.title}>
                 Harry <a>Assayag</a>
@@ -123,7 +128,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-    );
+    </>);
 };
 
 function getBackgroundColor() {
