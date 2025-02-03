@@ -7,7 +7,8 @@ type Item = {
     link: string,
     body: string
     tags?: string[]
-    imgPath?: string,
+    img?: string,
+    download?: string
 }
 
 const GAP = 30
@@ -17,16 +18,23 @@ const MARGIN = 5
 export default function Carousel() {
     const items: Item[] = [
         {   
-            heading: 'Wordle Online',
-            link: 'https://github.com/hassayag/WordleOnline',
-            body: 'Wordle... But with online competetive multiplayer for up to 5 players to compete in real-time',
-            tags: ['typescript', 'react', 'postgres']
-        },
-        {   
             heading: 'Deadlock Wiki Bot',
             link: 'https://github.com/deadlock-wiki/deadbot',
             body: `My open-source project that automates the scraping and uploading of data from Valve's "Deadlock" to a community-run wiki`,
             tags: ['python']
+        },
+        {   
+            heading: 'Wordle Online',
+            link: 'https://github.com/hassayag/WordleOnline',
+            body: 'Wordle... But with online competetive multiplayer for up to 5 players to compete in real-time',
+            tags: ['web', 'typescript', 'react', 'postgres']
+        },
+        {
+            heading: 'Synthesiser Imitation',
+            link: 'https://github.com/hassayag/autosynthesis',
+            download: 'autosynthesis.pdf',
+            body: 'A convolutional neural network that aims to mimic an incoming sound by adjusting the parameters of a subtractive synthesiser. Download the research paper ',
+            tags: ['ai', 'python']
         }
     ]
     const itemIndices = items.map((val, index) => 0.5+ index - items.length/2)
@@ -34,7 +42,7 @@ export default function Carousel() {
 
     const moveLeft = () => {
         if (pos === 0) {
-            setPos(items.length)
+            setPos(items.length-1)
         }
         else {
             setPos(pos-1)
@@ -66,6 +74,7 @@ export default function Carousel() {
                     return <CarouselItem 
                         item={item}
                         width={WIDTH}
+                        active={pos===index}
                     />
                 })}
             </div>
@@ -74,15 +83,24 @@ export default function Carousel() {
     </div>)
 }
 
-function CarouselItem({item, width}: {item: Item, width: number}) {
+function CarouselItem({item, width, active}: {item: Item, width: number, active: boolean}) {
     const style = {
         width: `${width-2*MARGIN}px`,
         margin: `${MARGIN}px`
     }
-    return (<div className={styles.item} style={style}>
+
+    const itemStyles = [styles.item]
+    if (active) {
+        itemStyles.push(styles.active)
+    }
+
+    return (<div className={itemStyles.join(' ')} style={style}>
         <h3>{item.heading}</h3>
         <a href={item.link}>{item.link.slice(8)}</a>
-        <span>{item.body}</span>
+        <span>
+            {item.body} 
+            {item.download ? <a href={item.download} download={item.download}>here</a> : ''}
+        </span>
         <div className={styles.tags}>{item.tags?.map(tag => <Tag label={tag}/>)}</div>
     </div>)
 }
