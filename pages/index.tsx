@@ -35,6 +35,13 @@ export default function Main() {
                 >
                     Powered by <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
                 </a>
+
+                <a
+                    href="https://github.com/hassayag/resume"
+                    rel="noopener noreferrer"
+                >
+                    Source code <img src="/github.svg" alt="Vercel" className={styles.logo} />
+                </a>
             </footer>
         </div>
     );
