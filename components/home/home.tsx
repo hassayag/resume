@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
+import Carousel from '../carousel/carousel'
 
 const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
     const embedSpotify = async () => {
@@ -86,15 +87,7 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <a className="anchor" id="projects" />
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>Projects</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
-                    </p>
+                    <Carousel></Carousel>
                 </div>
             </div>
             <div className={commonStyles.sectionBorder}>

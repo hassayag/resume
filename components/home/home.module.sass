@@ -6,7 +6,7 @@
   line-height: 1.15
   font-size: 3.6rem
   text-align: center
-  text-shadow: 2px 2px 3px #7272728f
+  // text-shadow: 1px 1px 3px rgba(#7272728f, 0.5)
 
   & a
     color: $primary
@@ -16,7 +16,6 @@
     font-size: 25px
     color: $secondary
     text-shadow: none
-    font-family: Courier New
 
 .links 
   margin-top: 2rem
@@ -42,6 +41,9 @@
 //   text-decoration: underline
 
 .column
+  position: relative
+  width: 1100px
+  right: 170px
   background-color: $header-footer
   border-radius: 10px
   border: 2px $secondary solid
@@ -53,6 +55,8 @@
 @media (max-width: $mobile-width)
   .column
     width: 100vw
+    right: 0
 
 .hide 
   opacity: 0
+  
