@@ -102,7 +102,7 @@ const Sidebar = ({toggleHidePage}: {toggleHidePage: () => void}) => {
                     <img src="/hamburger.svg" alt="hamburger" />
                 </button>
                 {itemsHtml}
-                <button className={styles.firebutton} onClick={() => toggleHidePage()}>🔥</button>
+                {/* <button className={styles.firebutton} onClick={() => toggleHidePage()}>🔥</button> */}
             </div>
         </>
     );

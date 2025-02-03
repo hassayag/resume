@@ -12,7 +12,7 @@ type Item = {
 }
 
 const GAP = 30
-const WIDTH = 280
+const WIDTH = 250
 const MARGIN = 5
 
 export default function Carousel() {
@@ -27,7 +27,7 @@ export default function Carousel() {
             heading: 'Wordle Online',
             link: 'https://github.com/hassayag/WordleOnline',
             body: 'Wordle... But with online competetive multiplayer for up to 5 players to compete in real-time',
-            tags: ['web', 'typescript', 'react', 'postgres']
+            tags: ['typescript', 'react', 'postgres']
         },
         {
             heading: 'Synthesiser Imitation',
