@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
-import Carousel from '../components/carousel'
+import Carousel from '../carousel/carousel'
 
 const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
     const embedSpotify = async () => {

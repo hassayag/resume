@@ -14,7 +14,7 @@ export default function Main() {
     }
     
     return (
-        <>
+        <div className={styles.root}>
             {/* <Background /> */}
             <Sidebar toggleHidePage={toggleHidePage}/>
             <div className={commonStyles.container}>
@@ -36,6 +36,6 @@ export default function Main() {
                     Powered by <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
                 </a>
             </footer>
-        </>
+        </div>
     );
 }
