@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./carousel.module.sass";
 import sideBarStyles from "../sidebar/sidebar.module.sass";
 
@@ -72,6 +72,7 @@ export default function Carousel() {
             <div className={styles.itemsContainer} style={itemsContainerStyle}>
                 {items.map((item, index) => {
                     return <CarouselItem 
+                        key={index}
                         item={item}
                         width={WIDTH}
                         active={pos===index}
@@ -101,7 +102,7 @@ function CarouselItem({item, width, active}: {item: Item, width: number, active:
             {item.body} 
             {item.download ? <a href={item.download} download={item.download}>here</a> : ''}
         </span>
-        <div className={styles.tags}>{item.tags?.map(tag => <Tag label={tag}/>)}</div>
+        <div className={styles.tags}>{item.tags?.map((tag, index) => <Tag key={index} label={tag}/>)}</div>
     </div>)
 }
 
