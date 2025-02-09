@@ -86,15 +86,12 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <a className="anchor" id="gear" />
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>Gear</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
-                    </p>
+                        <ul style={{fontSize: '1rem'}}>
+                            <li>Keychron K8 Pro</li>
+                            <li>Logitech G502X</li>
+                            <li>Sennheiser Momentum 2</li>
+                            <li>AMD Radeon 6800XT</li>
+                        </ul>
                 </div>
             </div>
             <div className={commonStyles.sectionBorder}>
