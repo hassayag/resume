@@ -11,7 +11,7 @@ type Item = {
 }
 
 const GAP = 30
-const WIDTH = 250
+const WIDTH = 285
 const MARGIN = 5
 
 export default function Carousel() {
