@@ -31,8 +31,14 @@ export default function Carousel() {
         {
             heading: 'Synthesiser Imitation',
             link: 'https://github.com/hassayag/autosynthesis',
-            body: 'A convolutional neural network that aims to mimic an incoming sound by adjusting the parameters of a subtractive synthesiser. Download the research paper <a href="autosynthesis.pdf" download="autosynthesis.pdf">here</a> ',
-            tags: ['ai', 'python']
+            body: 'A convolutional neural network that aims to mimic an incoming sound by adjusting the parameters of a subtractive synthesiser. Download the research paper <a href="autosynthesis.pdf" download="autosynthesis.pdf">here</a>',
+            tags: ['python', 'ai']
+        },
+        {
+            heading: 'Wave Simulation',
+            link: 'https://github.com/hassayag/bevy-wave-sim',
+            body: 'An interactive 2-D simulation that allows the user to trigger pressure waves and observe how they interact with different obstacles',
+            tags: ['rust', 'simulation']
         }
     ]
     const itemIndices = items.map((val, index) => 0.5+ index - items.length/2)
