@@ -41,6 +41,9 @@ export default function Main() {
                 >
                     Source code <img src="/github.svg" alt="Github" className={styles.logo} />
                 </a>
+
+
+                <span style={{flexGrow: 1}}>Copyright © 2025 Harry Assayag All Right Reserved.</span>
             </footer>
         </div>
     );
