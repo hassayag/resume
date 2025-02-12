@@ -5,11 +5,13 @@
     width: 100vw
 
 .footer
+    display: flex
+    flex-direction: column
     position: relative
     bottom: 0rem
     min-height: 5rem
     width: 100%
-    height: 1200px
+    height: 150px
     border-top: 1px solid $divider
     background-color: $header-footer
     color: $text-dark
@@ -19,9 +21,10 @@
     & img
         margin-left: 0.5rem
 
-    & a
+    & a, span
         padding-top: 1rem
         display: flex
+        font-size: calc( 1rem - 2px)
         justify-content: center
         align-items: center
         text-decoration: none

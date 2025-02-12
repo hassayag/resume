@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
 import Carousel from '../carousel/carousel'
-import {Email, Phone} from '@mui/icons-material';
+import {Email} from '@mui/icons-material';
+import { PROJECT_ITEMS } from './constants';
 
 const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
     const embedSpotify = async () => {
@@ -79,7 +80,7 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <a className="anchor" id="projects" />
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>Projects</h2>
-                    <Carousel></Carousel>
+                    <Carousel items={PROJECT_ITEMS}/>
                 </div>
             </div>
             <div className={commonStyles.sectionBorder}>
