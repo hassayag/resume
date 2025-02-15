@@ -9,7 +9,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
     const embedSpotify = async () => {
         const response = await fetch('/api/spotify');
         const uri = await response.text();
-        const element = document.getElementById('embed-iframe');
+        const element = document.getElementById('spotify-iframe');
         if (element) {
             element.innerHTML = '';
 
@@ -73,7 +73,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                             {' '}
                             Checkout what I'm listening to:
                         </div>
-                        <div id="embed-iframe"></div>
+                        <div id="spotify-iframe"></div>
                     </div>
                 </div>
                 <div className={commonStyles.sectionBorder}>

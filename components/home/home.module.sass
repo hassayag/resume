@@ -1,50 +1,57 @@
 @import 'styles/theme'
 
 .title
-  color: $text-dark
-  margin: 10px 12px 80px 12px
-  line-height: 1.15
-  font-size: 3.6rem
-  text-align: center
+    color: $text-dark
+    margin: 10px 12px 80px 12px
+    line-height: 1.15
+    font-size: 3.6rem
+    text-align: center
 
-  & a
-    color: $primary
-    text-decoration: none
+    & a
+        color: $primary
+        text-decoration: none
 
-  #blurb 
-    font-size: 25px
-    color: $secondary
-    text-shadow: none
+    #blurb
+        font-size: 25px
+        color: $secondary
+        text-shadow: none
+
+#spotify-iframe
+    min-width: 15rem
+    width: 70%
+    margin-left: 15%
+    margin-bottom: 20px
+    filter: drop-shadow(5px 5px 8px rgba(150, 150, 150, 0.6))
 
 .column
-  position: relative
-  width: 800px
-  right: 140px
-  background-color: $header-footer
-  border-left: 2px $secondary solid
-  border-right: 2px $secondary solid
-  padding: 1rem
-  background-color: rgba($header-footer, 0.95)
-  backdrop-filter: blur($blur)
-  transition: opacity 0.5s ease
+    position: relative
+    width: 800px
+    right: 140px
+    background-color: $header-footer
+    border-left: 2px $secondary solid
+    border-right: 2px $secondary solid
+    padding: 1rem
+    background-color: rgba($header-footer, 0.95)
+    backdrop-filter: blur($blur)
+    transition: opacity 0.5s ease
 
 @media (max-width: $mobile-width)
-  .column
-    width: 100vw
-    right: 0
-    padding-left: 50px
-    border: none
-    border-radius: 0
+    .column
+        width: 100vw
+        right: 0
+        padding-left: 50px
+        border: none
+        border-radius: 0
 
-.hide 
-  opacity: 0
-  
+.hide
+    opacity: 0
+
 .contactItems
-  font-size: 1rem
-  display: flex
-  flex-wrap: wrap
-  gap: 20px
-
-  .item
+    font-size: 1rem
     display: flex
-    gap: 5px
+    flex-wrap: wrap
+    gap: 20px
+
+    .item
+        display: flex
+        gap: 5px
