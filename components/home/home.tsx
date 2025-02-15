@@ -44,9 +44,10 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
             <a id="home" />
             <h1 className={styles.title}>
                 Harry <a>Assayag</a>
-                <br />
+                <br/>
                 <span id={styles.blurb}>Software Developer</span>
             </h1>
+            <div style={{fontSize: 12, fontStyle: 'italic', textAlign: 'center'}}> Checkout what I'm listening to:</div>
             <div id="embed-iframe"></div>
 
             <div className={commonStyles.sectionBorder}>
@@ -54,7 +55,7 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>About me</h2>
                     <p>
-                        Hey, I'm Harry, a full-stack software developer with a wide range of experience, from COBOL to Typescript! Over the last three years my focus has been on backend Node web development and AWS infrastructure. Besides coding, I am privvy to music production, sourdough, and unnecessarily long boardgames.
+                        Hey, I'm Harry, a full-stack software developer with a wide range of experience, from COBOL to Typescript! <br/><br/> Over the last three years my focus has been on backend Node web development and AWS infrastructure. Besides coding, I am privvy to music production, sourdough, and unnecessarily long boardgames.
                         <br/><br/>
                         My resume can be found <a href="CV.pdf" download="Harry Assayag CV 2025.pdf">here</a>
                     </p>
