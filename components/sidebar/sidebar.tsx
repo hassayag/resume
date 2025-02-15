@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Home, Info, MenuBook, Devices, Email} from '@mui/icons-material';
+import { Home, Info, MenuBook, Devices, Email } from '@mui/icons-material';
 import styles from './sidebar.module.sass';
 
 const SCROLL_OFFSET = 200;
 
-const Sidebar = ({toggleHidePage}: {toggleHidePage: () => void}) => {
+const Sidebar = ({ toggleHidePage }: { toggleHidePage: () => void }) => {
     const items = {
         home: <Home className={styles.icon} />,
         about: <Info className={styles.icon} />,
