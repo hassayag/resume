@@ -56,7 +56,7 @@ export default function Main() {
                     href="https://github.com/hassayag/resume"
                     rel="noopener noreferrer"
                 >
-                    <span style={{fontSize: 11, position: 'absolute', right: 5, bottom: 5}}>Source code<Code style={{paddingLeft: 5}}/></span>
+                    <span className={commonStyles.link} style={{fontSize: 11, position: 'absolute', right: 30, bottom: 10}}>Source code<Code style={{paddingLeft: 5, color: '#7c558c'}}/></span>
                 </a>
 
                 <span style={{paddingBottom: 10}}>Harry Assayag ©2025</span>

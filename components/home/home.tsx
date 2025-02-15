@@ -93,8 +93,8 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                             <div><a href='mailto:haassayag@gmail.com'>haassayag@gmail.com</a></div>
                         </div>
 
-                        <a className={styles.item} href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
-                            <img className={commonStyles.link} style={{width: 20, position: 'relative', bottom: 2}} src="/linkedin-blue.svg" alt="linkedin" />
+                        <a className={[styles.item, commonStyles.link].join(' ')} href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
+                            <img style={{width: 20, position: 'relative', bottom: 2}} src="/linkedin-blue.svg" alt="linkedin" />
                             <span>harryassayag</span>
                         </a>          
                     </div>                    
