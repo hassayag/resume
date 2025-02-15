@@ -47,8 +47,6 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <br/>
                 <span id={styles.blurb}>Software Developer</span>
             </h1>
-            <div style={{fontSize: 12, fontStyle: 'italic', textAlign: 'center'}}> Checkout what I'm listening to:</div>
-            <div id="embed-iframe"></div>
 
             <div className={commonStyles.sectionBorder}>
                 <a className="anchor" id="about" />
@@ -59,6 +57,11 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                         <br/><br/>
                         My resume can be found <a href="CV.pdf" download="Harry Assayag CV 2025.pdf">here</a>
                     </p>
+                    <br/>
+                    <br/>
+
+                    <div style={{fontSize: 12, fontStyle: 'italic', textAlign: 'center'}}> Checkout what I'm listening to:</div>
+                    <div id="embed-iframe"></div>
                 </div>
             </div>
             <div className={commonStyles.sectionBorder}>
@@ -85,12 +88,12 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 <div className={commonStyles.section}>
                     <h2 className={commonStyles.heading}>Contact</h2>
                     <div className={styles.contactItems}>
-                        <div className={styles.item}>
-                            <Email style={{position: 'relative', bottom: 2}}/>
+                        <div className={[styles.item, commonStyles.link].join(' ')}>
+                            <Email style={{position: 'relative', bottom: 2, color: '#7c558c'}}/>
                             <div><a href='mailto:haassayag@gmail.com'>haassayag@gmail.com</a></div>
                         </div>
 
-                        <a className=   {styles.item} href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
+                        <a className={styles.item} href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
                             <img className={commonStyles.link} style={{width: 20, position: 'relative', bottom: 2}} src="/linkedin-blue.svg" alt="linkedin" />
                             <span>harryassayag</span>
                         </a>          
