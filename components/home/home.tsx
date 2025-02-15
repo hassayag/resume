@@ -46,22 +46,6 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                 Harry <a>Assayag</a>
                 <br />
                 <span id={styles.blurb}>Software Developer</span>
-                <div className={styles.links}>
-                    <a href="https://github.com/hassayag" target="_blank" rel="noopener noreferrer">
-                        <img src="/github.svg" alt="github" className={styles.link} />
-                    </a>
-                    <a href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
-                        <img src="/linkedin-blue.svg" alt="linkedin" className={styles.link} />
-                    </a>
-
-                    <a
-                        href="https://open.spotify.com/user/hazzarius?si=bb02b8c9aeba426a"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img src="/spotify.svg" alt="spotify" className={styles.link} />
-                    </a>
-                </div>
             </h1>
             <div id="embed-iframe"></div>
 
@@ -106,12 +90,8 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
                         </div>
 
                         <a className=   {styles.item} href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
-                            <img style={{width: 20, position: 'relative', bottom: 2}} src="/linkedin-blue.svg" alt="linkedin" />
+                            <img className={commonStyles.link} style={{width: 20, position: 'relative', bottom: 2}} src="/linkedin-blue.svg" alt="linkedin" />
                             <span>harryassayag</span>
-                        </a>        
-                        <a className={styles.item} href="https://github.com/hassayag" target="_blank" rel="noopener noreferrer">
-                            <img style={{width: 20, position: 'relative', bottom: 2}} src="/github.svg" alt="github" />
-                            <span>hassayag</span>
                         </a>          
                     </div>                    
                 </div>
