@@ -1,0 +1,39 @@
+@import 'styles/theme'
+
+.root
+    background-color: $background
+    width: 100vw
+
+.footer
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    position: relative
+    bottom: 0rem
+    min-height: 5rem
+    width: 100%
+    height: 110px
+    border-top: 1px solid $divider
+    background-color: $header-footer
+    color: $text-dark
+    backdrop-filter: blur($blur)
+    z-index: 3
+
+    & img
+        margin-left: 0.5rem
+
+    & a, span
+        padding-top: 1rem
+        display: flex
+        font-size: calc( 1rem - 2px)
+        justify-content: center
+        align-items: center
+        text-decoration: none
+        color: inherit
+
+
+.links 
+  display: flex
+  flex-direction: row
+  justify-content: center
+  gap: 3px
