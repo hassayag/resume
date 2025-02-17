@@ -5,10 +5,6 @@ import styles from './contact-form.module.sass'
 const ACCESS_KEY = '29701a2f-59c8-43b1-9c23-b9d2acdb5845'
 export const ContactForm = () => {
    return(<div className={styles.contactSection}>
-    <p className={styles.contactDescription}>
-        Please get in touch via any of the below options or fill out the form below and I will get back to you as soon as possible.
-    </p>
-    <br/>
     <div className={styles.contactItems}>
     <div className={[styles.item, commonStyles.link].join(' ')}>
         <Email style={{ position: 'relative', bottom: 2, color: '#7c558c' }} />

@@ -99,29 +99,11 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                     <a className="anchor" id="contact" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>Contact</h2>
+                        <p>
+                            Please get in touch below and I will get back to you as soon as possible.
+                        </p>
+                        
                         <ContactForm/>
-                        {/* <div className={styles.contactItems}>
-                            <div className={[styles.item, commonStyles.link].join(' ')}>
-                                <Email style={{ position: 'relative', bottom: 2, color: '#7c558c' }} />
-                                <div>
-                                    <a href="mailto:haassayag@gmail.com">haassayag@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <a
-                                className={[styles.item, commonStyles.link].join(' ')}
-                                href="https://uk.linkedin.com/in/harryassayag"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <img
-                                    style={{ width: 20, position: 'relative', bottom: 2 }}
-                                    src="/linkedin-blue.svg"
-                                    alt="linkedin"
-                                />
-                                <span>harryassayag</span>
-                            </a>
-                        </div> */}
                     </div>
                 </div>
             </div>
