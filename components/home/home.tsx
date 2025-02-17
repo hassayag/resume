@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
 import Carousel from '../carousel/carousel';
-import { Email } from '@mui/icons-material';
 import { PROJECT_ITEMS } from './constants';
 import { ContactForm } from '../contact-form/contact-form';
 
