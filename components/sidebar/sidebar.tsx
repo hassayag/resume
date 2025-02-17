@@ -9,7 +9,7 @@ const Sidebar = ({ toggleHidePage }: { toggleHidePage: () => void }) => {
         home: <Home className={styles.icon} />,
         about: <Info className={styles.icon} />,
         projects: <MenuBook className={styles.icon} />,
-        gear: <Devices className={styles.icon} />,
+        // gear: <Devices className={styles.icon} />,
         contact: <Email className={styles.icon} />,
     };
 
