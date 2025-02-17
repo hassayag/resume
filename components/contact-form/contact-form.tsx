@@ -1,3 +1,4 @@
+import React from 'react'
 import { Email } from '@mui/icons-material';
 import commonStyles from '../common.module.sass';
 import styles from './contact-form.module.sass';
