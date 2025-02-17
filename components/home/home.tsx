@@ -99,11 +99,9 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                     <a className="anchor" id="contact" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>Contact</h2>
-                        <p>
-                            Please get in touch below and I will get back to you as soon as possible.
-                        </p>
-                        
-                        <ContactForm/>
+                        <p>Please get in touch below and I will get back to you as soon as possible.</p>
+
+                        <ContactForm />
                     </div>
                 </div>
             </div>
