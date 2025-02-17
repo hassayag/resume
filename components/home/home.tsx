@@ -76,6 +76,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                         <div id="spotify-iframe"></div>
                     </div>
                 </div>
+
                 <div className={commonStyles.sectionBorder}>
                     <a className="anchor" id="projects" />
                     <div className={commonStyles.section}>
@@ -83,24 +84,12 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                         <Carousel items={PROJECT_ITEMS} />
                     </div>
                 </div>
-                {/* <div className={commonStyles.sectionBorder}>
-                    <a className="anchor" id="gear" />
-                    <div className={commonStyles.section}>
-                        <h2 className={commonStyles.heading}>Gear</h2>
-                        <ul style={{ fontSize: '1rem' }}>
-                            <li>Keychron K8 Pro</li>
-                            <li>Logitech G502X</li>
-                            <li>Sennheiser Momentum 2</li>
-                            <li>AMD Radeon 6800XT</li>
-                        </ul>
-                    </div>
-                </div> */}
+
                 <div className={commonStyles.sectionBorder}>
                     <a className="anchor" id="contact" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>Contact</h2>
                         <p>Please get in touch below and I will get back to you as soon as possible.</p>
-
                         <ContactForm />
                     </div>
                 </div>
