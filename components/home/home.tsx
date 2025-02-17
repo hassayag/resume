@@ -4,6 +4,7 @@ import styles from './home.module.sass';
 import Carousel from '../carousel/carousel';
 import { Email } from '@mui/icons-material';
 import { PROJECT_ITEMS } from './constants';
+import { ContactForm } from '../contact-form/contact-form';
 
 const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
     const embedSpotify = async () => {
@@ -99,7 +100,8 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                     <a className="anchor" id="contact" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>Contact</h2>
-                        <div className={styles.contactItems}>
+                        <ContactForm/>
+                        {/* <div className={styles.contactItems}>
                             <div className={[styles.item, commonStyles.link].join(' ')}>
                                 <Email style={{ position: 'relative', bottom: 2, color: '#7c558c' }} />
                                 <div>
@@ -120,7 +122,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                                 />
                                 <span>harryassayag</span>
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
