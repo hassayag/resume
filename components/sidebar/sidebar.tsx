@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import DevicesIcon from '@mui/icons-material/Devices';
-import EmailIcon from '@mui/icons-material/Email';
-
+import { Home, Info, MenuBook, Devices, Email } from '@mui/icons-material';
 import styles from './sidebar.module.sass';
 
 const SCROLL_OFFSET = 200;
 
-const Sidebar = ({toggleHidePage}: {toggleHidePage: () => void}) => {
+const Sidebar = ({ toggleHidePage }: { toggleHidePage: () => void }) => {
     const items = {
-        home: <HomeIcon className={styles.icon} />,
-        about: <InfoIcon className={styles.icon} />,
-        projects: <MenuBookIcon className={styles.icon} />,
-        gear: <DevicesIcon className={styles.icon} />,
-        contact: <EmailIcon className={styles.icon} />,
+        home: <Home className={styles.icon} />,
+        about: <Info className={styles.icon} />,
+        projects: <MenuBook className={styles.icon} />,
+        // gear: <Devices className={styles.icon} />,
+        contact: <Email className={styles.icon} />,
     };
 
     const [scrollPos, setScrollPos] = useState(0);
@@ -102,7 +97,7 @@ const Sidebar = ({toggleHidePage}: {toggleHidePage: () => void}) => {
                     <img src="/hamburger.svg" alt="hamburger" />
                 </button>
                 {itemsHtml}
-                <button className={styles.firebutton} onClick={() => toggleHidePage()}>🔥</button>
+                {/* <button className={styles.firebutton} onClick={() => toggleHidePage()}>🔥</button> */}
             </div>
         </>
     );

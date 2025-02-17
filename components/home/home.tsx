@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
-import Carousel from '../carousel/carousel'
+import Carousel from '../carousel/carousel';
+import { PROJECT_ITEMS } from './constants';
+import { ContactForm } from '../contact-form/contact-form';
 
-const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
+const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
     const embedSpotify = async () => {
         const response = await fetch('/api/spotify');
         const uri = await response.text();
-        const element = document.getElementById('embed-iframe');
+        const element = document.getElementById('spotify-iframe');
         if (element) {
             element.innerHTML = '';
 
@@ -26,131 +28,85 @@ const Home = ({pageIsHidden}: {pageIsHidden: boolean}) => {
         ></iframe>
     `;
         }
-
-        const iframe = document.getElementById('spotify-iframe');
-        iframe.addEventListener('load', (event) => {
-            getBackgroundColor()
-        });
     };
 
     useEffect(() => {
         embedSpotify();
     }, []);
 
-    const homeClass = [styles.column]
+    const homeClass = [styles.column];
     if (pageIsHidden) {
-        homeClass.push(styles.hide)
+        homeClass.push(styles.hide);
     }
 
-    return (<>
-        <div className={homeClass.join(' ')}>
-            <a id="home" />
-            <h1 className={styles.title}>
-                Harry <a>Assayag</a>
-                <br />
-                <span id={styles.blurb}>Software Developer</span>
-                <div className={styles.links}>
-                    <a href="https://github.com/hassayag" target="_blank" rel="noopener noreferrer">
-                        <img src="/github.svg" alt="github" className={styles.link} />
-                    </a>
-                    <a href="https://uk.linkedin.com/in/harryassayag" target="_blank" rel="noopener noreferrer">
-                        <img src="/linkedin-blue.svg" alt="linkedin" className={styles.link} />
-                    </a>
+    return (
+        <>
+            <div className={homeClass.join(' ')}>
+                <a id="home" />
+                <h1 className={styles.title}>
+                    Harry <a>Assayag</a>
+                    <br />
+                    <span id={styles.blurb}>Software Developer</span>
+                </h1>
 
-                    <a
-                        href="https://open.spotify.com/user/hazzarius?si=bb02b8c9aeba426a"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img src="/spotify.svg" alt="spotify" className={styles.link} />
-                    </a>
-                </div>
-            </h1>
-            <div id="embed-iframe"></div>
+                <div className={commonStyles.sectionBorder}>
+                    <a className="anchor" id="about" />
+                    <div className={commonStyles.section}>
+                        <h2 className={commonStyles.heading}>About me</h2>
+                        <p>
+                            Hey, I&apos;m Harry, a full-stack software developer with a wide range of experience, from COBOL
+                            to Typescript! <br />
+                            <br /> Over the last three years my focus has been on backend Node web development and AWS
+                            infrastructure. Besides coding, I am privvy to music production, sourdough, and
+                            unnecessarily long boardgames.
+                            <br />
+                            <br />
+                            My resume can be found{' '}
+                            <a href="CV.pdf" download="Harry Assayag CV 2025.pdf">
+                                here
+                            </a>
+                        </p>
+                        <br />
+                        <br />
 
-            <div className={commonStyles.sectionBorder}>
-                <a className="anchor" id="about" />
-                <div className={commonStyles.section}>
-                    <h2 className={commonStyles.heading}>About me</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
-                    </p>
+                        <div style={{ fontSize: 12, fontStyle: 'italic', textAlign: 'center' }}>
+                            {' '}
+                            Checkout what I&apos;m listening to:
+                        </div>
+                        <div id="spotify-iframe"></div>
+                    </div>
+                </div>
+                <div className={commonStyles.sectionBorder}>
+                    <a className="anchor" id="projects" />
+                    <div className={commonStyles.section}>
+                        <h2 className={commonStyles.heading}>Projects</h2>
+                        <Carousel items={PROJECT_ITEMS} />
+                    </div>
+                </div>
+                {/* <div className={commonStyles.sectionBorder}>
+                    <a className="anchor" id="gear" />
+                    <div className={commonStyles.section}>
+                        <h2 className={commonStyles.heading}>Gear</h2>
+                        <ul style={{ fontSize: '1rem' }}>
+                            <li>Keychron K8 Pro</li>
+                            <li>Logitech G502X</li>
+                            <li>Sennheiser Momentum 2</li>
+                            <li>AMD Radeon 6800XT</li>
+                        </ul>
+                    </div>
+                </div> */}
+                <div className={commonStyles.sectionBorder}>
+                    <a className="anchor" id="contact" />
+                    <div className={commonStyles.section}>
+                        <h2 className={commonStyles.heading}>Contact</h2>
+                        <p>Please get in touch below and I will get back to you as soon as possible.</p>
+
+                        <ContactForm />
+                    </div>
                 </div>
             </div>
-            <div className={commonStyles.sectionBorder}>
-                <a className="anchor" id="projects" />
-                <div className={commonStyles.section}>
-                    <h2 className={commonStyles.heading}>Projects</h2>
-                    <Carousel></Carousel>
-                </div>
-            </div>
-            <div className={commonStyles.sectionBorder}>
-                <a className="anchor" id="gear" />
-                <div className={commonStyles.section}>
-                    <h2 className={commonStyles.heading}>Gear</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
-                    </p>
-                </div>
-            </div>
-            <div className={commonStyles.sectionBorder}>
-                <a className="anchor" id="contact" />
-                <div className={commonStyles.section}>
-                    <h2 className={commonStyles.heading}>Contact</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo adipisci iste,
-                        aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et aliquid nihil ea
-                        officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error minima cum quo
-                        adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis, molestiae, et
-                        aliquid nihil ea officia non aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-                        minima cum quo adipisci iste, aliquam odio. Impedit quidem repudiandae officiis repellat omnis,
-                        molestiae, et aliquid nihil ea officia non aut?
-                    </p>
-                </div>
-            </div>
-        </div>
-    </>);
+        </>
+    );
 };
-
-function getBackgroundColor() {
-    // const iframe = document.getElementById('spotify-iframe') as any
-
-    // const canvas = document.createElement('canvas');
-    // const ctx = canvas.getContext('2d')
-
-    // // Set canvas dimensions
-    // canvas.width = 100
-    // canvas.height = 100
-
-    // // Draw iframe content onto the canvas
-    // ctx.drawWindow( iframe.contentWindow, 0, 0, canvas.width, canvas.height, 'rgb(255,255,255)');
-
-    // // Get image data from canvas
-    // const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    // const pixelColor = getColorAtPixel(imageData, 0, 0);
-    // console.log({pixelColor})
-}
-
-function getColorAtPixel(imageData, x, y) {
-    const index = (y * imageData.width + x) * 4;
-    return {
-        r: imageData.data[index],
-        g: imageData.data[index + 1],
-        b: imageData.data[index + 2],
-        a: imageData.data[index + 3]
-    };
-}
 
 export default Home;

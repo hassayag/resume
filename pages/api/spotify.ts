@@ -1,7 +1,4 @@
 import queryString from 'querystring';
-import crypto from 'crypto';
-
-const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 
 let tokenExpiresAt = Date.now();
 let lastToken = '';
@@ -54,7 +51,7 @@ async function getIFrame(uri) {
     );
 
     if (response.status !== 200) {
-        throw new Error(`Spotify request failed - ${response.body}`)
+        throw new Error(`Spotify request failed - ${response.body}`);
         return;
     }
 
