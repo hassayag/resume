@@ -54,7 +54,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>About me</h2>
                         <p>
-                            Hey, I'm Harry, a full-stack software developer with a wide range of experience, from COBOL
+                            Hey, I&apos;m Harry, a full-stack software developer with a wide range of experience, from COBOL
                             to Typescript! <br />
                             <br /> Over the last three years my focus has been on backend Node web development and AWS
                             infrastructure. Besides coding, I am privvy to music production, sourdough, and
@@ -71,7 +71,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
 
                         <div style={{ fontSize: 12, fontStyle: 'italic', textAlign: 'center' }}>
                             {' '}
-                            Checkout what I'm listening to:
+                            Checkout what I&apos;m listening to:
                         </div>
                         <div id="spotify-iframe"></div>
                     </div>
