@@ -1,6 +1,7 @@
 @import 'styles/theme.sass'
 
 .sidebar
+    transition: all 0.5s ease
     display: flex
     flex-direction: column
     position: fixed
@@ -12,20 +13,11 @@
     min-width: 70px
     z-index: 1
 
-.sidebarClosed
-    transition: all 0.5s ease
-
-    .card
-        transition: color 0.5s ease
-    .hamburger
-        transition: transform 0.5s ease
         
 .sidebarOpen
-    transition: all 0.5s ease
     width: 6%
     min-width: 11rem
     color: $text-dark
-    transition: all 0.5s ease
     background-color: rgba($header-footer, 0.9)
     backdrop-filter: blur($blur)
     border-right: 2px solid $secondary
@@ -35,6 +27,7 @@
         transform: rotate(90deg)
 
 .card
+    transition: border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease
     margin: 0.5rem 1rem 0.5rem 1rem
     text-align: center
     color: transparent
@@ -44,8 +37,6 @@
     font-weight: bold
     border: 2px solid $secondary
     border-radius: 8px
-    // box-shadow: 3px 3px 6px 0 rgba(0,0,0,.2)
-    transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease
 
     a
         height: 100%
