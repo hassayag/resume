@@ -79,7 +79,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                     <span id={styles.blurb}>Software Developer</span>
                 </h1>
 
-                <div className={commonStyles.sectionBorder}>
+                <div className={[commonStyles.sectionBorder, commonStyles.sectionBorderAlt].join(' ')}>
                     <a className="anchor" id="about" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>About me</h2>
@@ -115,7 +115,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                     </div>
                 </div>
 
-                <div className={commonStyles.sectionBorder}>
+                <div className={[commonStyles.sectionBorder, commonStyles.sectionBorderAlt].join(' ')} style={{boxShadow: 'none'}}>
                     <a className="anchor" id="contact" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>Contact</h2>

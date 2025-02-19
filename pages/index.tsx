@@ -18,7 +18,7 @@ export default function Main() {
         <div className={styles.root}>
             {/* <Background /> */}
             <Sidebar toggleHidePage={toggleHidePage} />
-            <div className={commonStyles.container}>
+            <div className={styles.main}>
                 <Head>
                     <title>Harry Assayag</title>
                     <link rel="icon" href="/favicon.ico" />
