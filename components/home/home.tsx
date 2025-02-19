@@ -35,7 +35,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
     const startGlowLoop = () => {
         const interval = setInterval(() => {
         setLetterGlowIndex((value) => {
-            // if reaches the end, stop the loop for a bit
+            // if reaches the end of the title, stop the loop
             if (value === 'HarryAssayag'.length-1) {
                 clearInterval(interval)
                 return -1
@@ -45,6 +45,8 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
     }, 80)}
 
     useEffect(() => {
+        // trigger animation on initial load, then run it every 5s
+        setTimeout(() => startGlowLoop(), 500)
         setInterval(() => startGlowLoop(), 5000)
 
         embedSpotify();
