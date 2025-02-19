@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './carousel.module.sass';
 import sideBarStyles from '../sidebar/sidebar.module.sass';
 
@@ -40,7 +40,7 @@ export default function Carousel({ items }: { items: Item[] }) {
         marginRight: WIDTH,
         marginLeft: WIDTH,
     };
-
+    
     return (
         <div className={styles.carousel}>
             <button className={[styles.button, sideBarStyles.clickable].join(' ')} onClick={moveLeft}>
@@ -49,7 +49,7 @@ export default function Carousel({ items }: { items: Item[] }) {
             <div className={styles.container}>
                 <div className={styles.itemsContainer} style={itemsContainerStyle}>
                     {items.map((item, index) => {
-                        return <CarouselItem key={index} item={item} width={WIDTH} active={pos === index} />;
+                        return <CarouselItem key={index} item={item} width={WIDTH} active={pos === index} onClick={() => setPos(index)}/>;
                     })}
                 </div>
             </div>
@@ -60,7 +60,7 @@ export default function Carousel({ items }: { items: Item[] }) {
     );
 }
 
-function CarouselItem({ item, width, active }: { item: Item; width: number; active: boolean }) {
+function CarouselItem({ item, width, active, onClick }: { item: Item; width: number; active: boolean, onClick: () => void }) {
     const style = {
         width: `${width - 2 * MARGIN}px`,
         margin: `${MARGIN}px`,
@@ -72,7 +72,7 @@ function CarouselItem({ item, width, active }: { item: Item; width: number; acti
     }
 
     return (
-        <div className={itemStyles.join(' ')} style={style}>
+        <div className={itemStyles.join(' ')} style={style} onClick={onClick}>
             <h3>{item.heading}</h3>
             <a className={styles.link} href={item.link}>
                 {item.link.slice(8)}
