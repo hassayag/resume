@@ -36,16 +36,16 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
         const interval = setInterval(() => {
         setLetterGlowIndex((value) => {
             // if reaches the end, stop the loop for a bit
-            if (value === 'Assayag'.length-1) {
+            if (value === 'HarryAssayag'.length-1) {
                 clearInterval(interval)
                 return -1
             }
             return value + 1
         })
-    }, 100)}
+    }, 80)}
 
     useEffect(() => {
-        setInterval(() => startGlowLoop(), 3000)
+        setInterval(() => startGlowLoop(), 5000)
 
         embedSpotify();
     }, []);
@@ -60,15 +60,19 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
             <div className={homeClass.join(' ')}>
                 <a id="home" />
                 <h1 className={styles.title}>
-                    Harry
+                    <span className={[styles.black, letterGlowIndex === 0 ? styles.flash : undefined].join(' ')}>H</span>
+                    <span className={[styles.black, letterGlowIndex === 1 ? styles.flash : undefined].join(' ')}>a</span>
+                    <span className={[styles.black, letterGlowIndex === 2 ? styles.flash : undefined].join(' ')}>r</span>
+                    <span className={[styles.black, letterGlowIndex === 3 ? styles.flash : undefined].join(' ')}>r</span>
+                    <span className={[styles.black, letterGlowIndex === 4 ? styles.flash : undefined].join(' ')}>y</span>
                     <span> </span>
-                    <span className={letterGlowIndex === 0 ? styles.flash : undefined}>A</span>
-                    <span className={letterGlowIndex === 1 ? styles.flash : undefined}>s</span>
-                    <span className={letterGlowIndex === 2 ? styles.flash : undefined}>s</span>    
-                    <span className={letterGlowIndex === 3 ? styles.flash : undefined}>a</span>    
-                    <span className={letterGlowIndex === 4 ? styles.flash : undefined}>y</span>    
-                    <span className={letterGlowIndex === 5 ? styles.flash : undefined}>a</span>   
-                    <span className={letterGlowIndex === 6 ? styles.flash : undefined}>g</span>    
+                    <span className={[styles.purple, letterGlowIndex === 5 ? styles.flash : undefined].join(' ')}>A</span>
+                    <span className={[styles.purple, letterGlowIndex === 6 ? styles.flash : undefined].join(' ')}>s</span>
+                    <span className={[styles.purple, letterGlowIndex === 7 ? styles.flash : undefined].join(' ')}>s</span>    
+                    <span className={[styles.purple, letterGlowIndex === 8 ? styles.flash : undefined].join(' ')}>a</span>    
+                    <span className={[styles.purple, letterGlowIndex === 9 ? styles.flash : undefined].join(' ')}>y</span>    
+                    <span className={[styles.purple, letterGlowIndex === 10 ? styles.flash : undefined].join(' ')}>a</span>   
+                    <span className={[styles.purple, letterGlowIndex === 11 ? styles.flash : undefined].join(' ')}>g</span>    
                     <br />
                     <span id={styles.blurb}>Software Developer</span>
                 </h1>
