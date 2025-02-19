@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
 import Carousel from '../carousel/carousel';
@@ -30,7 +30,23 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
         }
     };
 
+    const [letterGlowIndex, setLetterGlowIndex] = useState(-1)
+
+    const startGlowLoop = () => {
+        const interval = setInterval(() => {
+        setLetterGlowIndex((value) => {
+            // if reaches the end, stop the loop for a bit
+            if (value === 'Assayag'.length-1) {
+                clearInterval(interval)
+                return -1
+            }
+            return value + 1
+        })
+    }, 100)}
+
     useEffect(() => {
+        setInterval(() => startGlowLoop(), 3000)
+
         embedSpotify();
     }, []);
 
@@ -44,7 +60,15 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
             <div className={homeClass.join(' ')}>
                 <a id="home" />
                 <h1 className={styles.title}>
-                    Harry <a>Assayag</a>
+                    Harry
+                    <span> </span>
+                    <span className={letterGlowIndex === 0 ? styles.flash : undefined}>A</span>
+                    <span className={letterGlowIndex === 1 ? styles.flash : undefined}>s</span>
+                    <span className={letterGlowIndex === 2 ? styles.flash : undefined}>s</span>    
+                    <span className={letterGlowIndex === 3 ? styles.flash : undefined}>a</span>    
+                    <span className={letterGlowIndex === 4 ? styles.flash : undefined}>y</span>    
+                    <span className={letterGlowIndex === 5 ? styles.flash : undefined}>a</span>   
+                    <span className={letterGlowIndex === 6 ? styles.flash : undefined}>g</span>    
                     <br />
                     <span id={styles.blurb}>Software Developer</span>
                 </h1>
