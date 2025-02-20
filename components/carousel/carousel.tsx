@@ -12,7 +12,7 @@ type Item = {
 };
 
 const GAP = 30;
-const WIDTH = 250;
+const WIDTH = 280;
 const MARGIN = 5;
 
 export default function Carousel({ items }: { items: Item[] }) {
@@ -103,5 +103,5 @@ function CarouselPos({length, activeIndex, setPos}: {length: number, activeIndex
 }
 
 function CarouselPosItem({isActive}: {isActive: boolean}) {
-    return (<Circle className={[styles.carouselPosItem, isActive ? styles.active : undefined].join(' ')}/>)
+    return (<Circle fontSize='inherit' className={[styles.carouselPosItem, isActive ? styles.active : undefined].join(' ')}/>)
 }
