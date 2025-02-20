@@ -2,14 +2,35 @@
 
 .title
     color: $text-dark
-    margin: 10px 12px 80px 12px
+    margin: 30px 12px 80px 12px
     line-height: 1.15
     font-size: 3.6rem
     text-align: center
 
-    & a
+    .flash
+        transition: all 0.1s ease
+        position: relative
+        bottom: 4px
+
+    .black
+        transition: all 0.1s ease
+        color: inherit
+        text-decoration: none
+
+        &.flash
+            transition: all 0.1s ease
+            color: #b3b3b3
+            text-shadow: 2px 2px #555555
+
+    .purple
+        transition: all 0.1s ease
         color: $primary
         text-decoration: none
+
+        &.flash
+            transition: all 0.1s ease
+            color: $glow
+            text-shadow: 2px 2px $glow-shadow
 
     #blurb
         font-size: 25px
@@ -26,11 +47,8 @@
 .column
     position: relative
     width: 800px
-    right: 140px
     background-color: $header-footer
-    border-left: 2px $secondary solid
-    border-right: 2px $secondary solid
-    padding: 1rem
+    padding: 1px
     background-color: rgba($header-footer, 0.95)
     backdrop-filter: blur($blur)
     transition: opacity 0.5s ease

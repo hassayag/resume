@@ -31,8 +31,6 @@ const Sidebar = ({ toggleHidePage }: { toggleHidePage: () => void }) => {
     useEffect(() => {
         updateClosestAnchor();
     }, [scrollPos]);
-    // Create a ref for the DOM element you want to start from
-    // const elementRef = useRef(null);
 
     // Function to find the closest anchor tag
     const updateClosestAnchor = () => {

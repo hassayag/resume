@@ -18,7 +18,7 @@ export default function Main() {
         <div className={styles.root}>
             {/* <Background /> */}
             <Sidebar toggleHidePage={toggleHidePage} />
-            <div className={commonStyles.container}>
+            <div className={styles.main}>
                 <Head>
                     <title>Harry Assayag</title>
                     <link rel="icon" href="/favicon.ico" />
@@ -53,17 +53,18 @@ export default function Main() {
                         />
                     </a>
                 </div>
-                <a href="https://github.com/hassayag/resume" rel="noopener noreferrer">
-                    <span
-                        className={commonStyles.link}
-                        style={{ fontSize: 11, position: 'absolute', right: 30, bottom: 10 }}
-                    >
-                        Source code
-                        <Code style={{ paddingLeft: 5, color: '#7c558c' }} />
-                    </span>
-                </a>
-
-                <span style={{ paddingBottom: 10 }}>Harry Assayag ©2025</span>
+                <div className={styles.bottom}>
+                    <div style={{width: 120}}></div>
+                    <div>Harry Assayag ©2025</div>
+                    <a style={{marginBottom: 12, marginRight: 12}} href="https://github.com/hassayag/resume" rel="noopener noreferrer">
+                        <span
+                            className={commonStyles.link}
+                        >
+                            Source code
+                            <Code style={{ position: 'relative', top: 7, paddingLeft: 5, color: '#7c558c' }} />
+                        </span>
+                    </a>
+                </div>
             </footer>
         </div>
     );

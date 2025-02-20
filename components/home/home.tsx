@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import commonStyles from '../common.module.sass';
 import styles from './home.module.sass';
 import Carousel from '../carousel/carousel';
@@ -30,7 +30,25 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
         }
     };
 
+    const [letterGlowIndex, setLetterGlowIndex] = useState(-1)
+
+    const startGlowLoop = () => {
+        const interval = setInterval(() => {
+        setLetterGlowIndex((value) => {
+            // if reaches the end of the title, stop the loop
+            if (value === 'HarryAssayag'.length-1) {
+                clearInterval(interval)
+                return -1
+            }
+            return value + 1
+        })
+    }, 80)}
+
     useEffect(() => {
+        // trigger animation on initial load, then run it every 5s
+        setTimeout(() => startGlowLoop(), 500)
+        setInterval(() => startGlowLoop(), 5000)
+
         embedSpotify();
     }, []);
 
@@ -44,12 +62,24 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
             <div className={homeClass.join(' ')}>
                 <a id="home" />
                 <h1 className={styles.title}>
-                    Harry <a>Assayag</a>
+                    <span className={[styles.black, letterGlowIndex === 0 ? styles.flash : undefined].join(' ')}>H</span>
+                    <span className={[styles.black, letterGlowIndex === 1 ? styles.flash : undefined].join(' ')}>a</span>
+                    <span className={[styles.black, letterGlowIndex === 2 ? styles.flash : undefined].join(' ')}>r</span>
+                    <span className={[styles.black, letterGlowIndex === 3 ? styles.flash : undefined].join(' ')}>r</span>
+                    <span className={[styles.black, letterGlowIndex === 4 ? styles.flash : undefined].join(' ')}>y</span>
+                    <span> </span>
+                    <span className={[styles.purple, letterGlowIndex === 5 ? styles.flash : undefined].join(' ')}>A</span>
+                    <span className={[styles.purple, letterGlowIndex === 6 ? styles.flash : undefined].join(' ')}>s</span>
+                    <span className={[styles.purple, letterGlowIndex === 7 ? styles.flash : undefined].join(' ')}>s</span>    
+                    <span className={[styles.purple, letterGlowIndex === 8 ? styles.flash : undefined].join(' ')}>a</span>    
+                    <span className={[styles.purple, letterGlowIndex === 9 ? styles.flash : undefined].join(' ')}>y</span>    
+                    <span className={[styles.purple, letterGlowIndex === 10 ? styles.flash : undefined].join(' ')}>a</span>   
+                    <span className={[styles.purple, letterGlowIndex === 11 ? styles.flash : undefined].join(' ')}>g</span>    
                     <br />
                     <span id={styles.blurb}>Software Developer</span>
                 </h1>
 
-                <div className={commonStyles.sectionBorder}>
+                <div className={[commonStyles.sectionBorder, commonStyles.sectionBorderAlt].join(' ')}>
                     <a className="anchor" id="about" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>About me</h2>
@@ -76,6 +106,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                         <div id="spotify-iframe"></div>
                     </div>
                 </div>
+
                 <div className={commonStyles.sectionBorder}>
                     <a className="anchor" id="projects" />
                     <div className={commonStyles.section}>
@@ -83,24 +114,12 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                         <Carousel items={PROJECT_ITEMS} />
                     </div>
                 </div>
-                {/* <div className={commonStyles.sectionBorder}>
-                    <a className="anchor" id="gear" />
-                    <div className={commonStyles.section}>
-                        <h2 className={commonStyles.heading}>Gear</h2>
-                        <ul style={{ fontSize: '1rem' }}>
-                            <li>Keychron K8 Pro</li>
-                            <li>Logitech G502X</li>
-                            <li>Sennheiser Momentum 2</li>
-                            <li>AMD Radeon 6800XT</li>
-                        </ul>
-                    </div>
-                </div> */}
-                <div className={commonStyles.sectionBorder}>
+
+                <div className={[commonStyles.sectionBorder, commonStyles.sectionBorderAlt].join(' ')} style={{boxShadow: 'none'}}>
                     <a className="anchor" id="contact" />
                     <div className={commonStyles.section}>
                         <h2 className={commonStyles.heading}>Contact</h2>
                         <p>Please get in touch below and I will get back to you as soon as possible.</p>
-
                         <ContactForm />
                     </div>
                 </div>

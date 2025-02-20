@@ -2,11 +2,13 @@
 
 .carousel
     display: flex
+    flex-direction: column
     position: relative
-    // right: 30px
     justify-content: center
     align-items: center
-    // width: calc( 100% + 60px )
+    width: 110%
+    right: 5%
+    margin: auto
 
 .container
     mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent)
@@ -30,14 +32,35 @@
     flex-basis: 0
     transition: left 1s
 
+.buttons
+    width: 85%
+    display: flex
+    justify-content: space-between
+
 .button
-    height: 50px
+    height: 30px
     width: 20px
     background-color: $background
     border: 1px solid $divider
+    border-radius: 3px
     text-align: center
     margin: 5px
     transition: all 0.3s ease
+
+.carouselPos
+    display: flex
+    align-items: center
+    gap: 10px
+
+.carouselPosItem
+    transition: color 0.3s ease
+    font-size: 12px
+    color: $secondary
+    margin-top: 8px
+
+    &.active
+        box-shadow: none
+        color: $glow
 
 .item
     display: flex
