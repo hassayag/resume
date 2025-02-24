@@ -87,7 +87,7 @@ const Home = ({ pageIsHidden }: { pageIsHidden: boolean }) => {
                             Hey, I&apos;m Harry, a full-stack software developer with a wide range of experience, from COBOL
                             to Typescript! <br />
                             <br /> Over the last three years my focus has been on backend Node web development and AWS
-                            infrastructure. Besides coding, I am privvy to music production, sourdough, and
+                            infrastructure. Besides coding, I am partial to music production, baking, and
                             unnecessarily long boardgames.
                             <br />
                             <br />
